@@ -1,8 +1,8 @@
 {
   "version": "0.2",
   "ignorePaths": [
-    "utils/generated.ts",
-    "graphql/schema.graphql"
+    "app/utils/generated.ts",
+    "app/graphql/schema.graphql"
   ],
   "dictionaryDefinitions": [],
   "dictionaries": [],
