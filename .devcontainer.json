@@ -1,0 +1,17 @@
+{
+  "name": "remix",
+  "dockerComposeFile": "./docker-compose.yml",
+  "service": "node",
+  "workspaceFolder": "/workspace",
+  "shutdownAction": "stopCompose",
+  "extensions": [
+    "streetsidesoftware.code-spell-checker",
+    "dbaeumer.vscode-eslint",
+    "fauna.fauna",
+    "graphql.vscode-graphql",
+    "oderwat.indent-rainbow",
+    "esbenp.prettier-vscode",
+    "visualstudioexptteam.vscodeintellicode",
+    "github.copilot"
+  ]
+}
