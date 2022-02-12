@@ -1,9 +1,14 @@
-import { Heading } from "@chakra-ui/react";
+import { Center, Heading } from "@chakra-ui/react";
+import { VFC } from "react";
+import { Layout } from "~/components/Layout";
 
-export default function Index() {
+const Index: VFC = () => {
   return (
-    <>
-      <Heading>test</Heading>
-    </>
+    <Layout>
+      <Center>
+        <Heading>Hello, world!</Heading>
+      </Center>
+    </Layout>
   );
-}
+};
+export default Index;
