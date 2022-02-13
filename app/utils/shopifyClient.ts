@@ -1,7 +1,7 @@
 import { GraphQLClient } from "graphql-request";
 
 const endpoint =
-  "https://sample-olive.myshopify.com/api/graphql";
+  "https://sample-olive.myshopify.com/api/2022-01/graphql.json";
 
 export const graphQLClient = new GraphQLClient(endpoint, {
   headers: {

@@ -79,7 +79,7 @@ export function ErrorBoundary({ error }: { error: Error }) {
     <Document title="Error!">
       <ChakraProvider>
         <Center minH={"100vh"}>
-          <Heading as="h1" bg="blue.500">
+          <Heading as="h1">
             [ErrorBoundary]: There was an error:{" "}
             {error.message}
           </Heading>

@@ -17,12 +17,14 @@ export type Scalars = {
    * Represents an [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)-encoded date and time string.
    * For example, 3:30 pm on September 7, 2019 in the time zone of UTC (Coordinated Universal Time) is
    * represented as `"2019-09-07T15:50:00Z`".
+   *
    */
   DateTime: any;
   /**
    * A signed decimal number, which supports arbitrary precision and is serialized as a string.
    *
    * Example values: `"29.99"`, `"29.999"`.
+   *
    */
   Decimal: any;
   /**
@@ -30,6 +32,7 @@ export type Scalars = {
    * complete list of HTML elements.
    *
    * Example value: `"<p>Grey cotton knit sweater.</p>"`.
+   *
    */
   HTML: any;
   /**
@@ -46,6 +49,7 @@ export type Scalars = {
    *     }]
    *   }
    * }`
+   *
    */
   JSON: any;
   /** A monetary value string without a currency symbol or code. Example value: `"100.57"`. */
@@ -56,6 +60,7 @@ export type Scalars = {
    *
    * For example, `"https://johns-apparel.myshopify.com"` is a valid URL. It includes a scheme (`https`) and a host
    * (`johns-apparel.myshopify.com`).
+   *
    */
   URL: any;
 };
@@ -63,6 +68,7 @@ export type Scalars = {
 /**
  * A version of the API, as defined by [Shopify API versioning](https://shopify.dev/api/usage/versioning).
  * Versions are commonly referred to by their handle (for example, `2021-10`).
+ *
  */
 export type ApiVersion = {
   __typename?: 'ApiVersion';
@@ -70,13 +76,7 @@ export type ApiVersion = {
   displayName: Scalars['String'];
   /** The unique identifier of an ApiVersion. All supported API versions have a date-based (YYYY-MM) or `unstable` handle. */
   handle: Scalars['String'];
-  /**
-   * Whether the version is actively supported by Shopify. Supported API versions
-   * are guaranteed to be stable. Unsupported API versions include unstable,
-   * release candidate, and end-of-life versions that are marked as unsupported.
-   * For more information, refer to
-   * [Versioning](https://shopify.dev/api/usage/versioning).
-   */
+  /** Whether the version is actively supported by Shopify. Supported API versions are guaranteed to be stable. Unsupported API versions include unstable, release candidate, and end-of-life versions that are marked as unsupported. For more information, refer to [Versioning](https://shopify.dev/api/usage/versioning). */
   supported: Scalars['Boolean'];
 };
 
@@ -127,7 +127,10 @@ export type Article = HasMetafields & Node & OnlineStorePublishable & {
   excerpt?: Maybe<Scalars['String']>;
   /** The excerpt of the article, complete with HTML formatting. */
   excerptHtml?: Maybe<Scalars['HTML']>;
-  /** A human-friendly unique string for the Article automatically generated from its title. */
+  /**
+   * A human-friendly unique string for the Article automatically generated from its title.
+   *
+   */
   handle: Scalars['String'];
   /** A globally-unique identifier. */
   id: Scalars['ID'];
@@ -141,10 +144,7 @@ export type Article = HasMetafields & Node & OnlineStorePublishable & {
    *
    */
   metafields: MetafieldConnection;
-  /**
-   * The URL used for viewing the resource on the shop's Online Store. Returns
-   * `null` if the resource is currently not published to the Online Store sales channel.
-   */
+  /** The URL used for viewing the resource on the shop's Online Store. Returns `null` if the resource is currently not published to the Online Store sales channel. */
   onlineStoreUrl?: Maybe<Scalars['URL']>;
   /** The date and time when the article was published. */
   publishedAt: Scalars['DateTime'];
@@ -211,7 +211,10 @@ export type ArticleAuthor = {
   name: Scalars['String'];
 };
 
-/** An auto-generated type for paginating through multiple Articles. */
+/**
+ * An auto-generated type for paginating through multiple Articles.
+ *
+ */
 export type ArticleConnection = {
   __typename?: 'ArticleConnection';
   /** A list of edges. */
@@ -220,7 +223,10 @@ export type ArticleConnection = {
   pageInfo: PageInfo;
 };
 
-/** An auto-generated type which holds one Article and a cursor during pagination. */
+/**
+ * An auto-generated type which holds one Article and a cursor during pagination.
+ *
+ */
 export type ArticleEdge = {
   __typename?: 'ArticleEdge';
   /** A cursor for use in pagination. */
@@ -243,6 +249,7 @@ export enum ArticleSortKeys {
    * During a search (i.e. when the `query` parameter has been specified on the connection) this sorts the
    * results by relevance to the search term(s). When no search query is specified, this sort key is not
    * deterministic and should not be used.
+   *
    */
   Relevance = 'RELEVANCE',
   /** Sort by the `title` value. */
@@ -268,7 +275,10 @@ export type AttributeInput = {
   value: Scalars['String'];
 };
 
-/** Automatic discount applications capture the intentions of a discount that was automatically applied. */
+/**
+ * Automatic discount applications capture the intentions of a discount that was automatically applied.
+ *
+ */
 export type AutomaticDiscountApplication = DiscountApplication & {
   __typename?: 'AutomaticDiscountApplication';
   /** The method by which the discount's value is allocated to its entitled items. */
@@ -290,6 +300,7 @@ export type AvailableShippingRates = {
    * Whether or not the shipping rates are ready.
    * The `shippingRates` field is `null` when this value is `false`.
    * This field should be polled until its value becomes `true`.
+   *
    */
   ready: Scalars['Boolean'];
   /** The fetched shipping rates. `null` until the `ready` field is `true`. */
@@ -305,7 +316,10 @@ export type Blog = HasMetafields & Node & OnlineStorePublishable & {
   articles: ArticleConnection;
   /** The authors who have contributed to the blog. */
   authors: Array<ArticleAuthor>;
-  /** A human-friendly unique string for the Blog automatically generated from its title. */
+  /**
+   * A human-friendly unique string for the Blog automatically generated from its title.
+   *
+   */
   handle: Scalars['String'];
   /** A globally-unique identifier. */
   id: Scalars['ID'];
@@ -317,10 +331,7 @@ export type Blog = HasMetafields & Node & OnlineStorePublishable & {
    *
    */
   metafields: MetafieldConnection;
-  /**
-   * The URL used for viewing the resource on the shop's Online Store. Returns
-   * `null` if the resource is currently not published to the Online Store sales channel.
-   */
+  /** The URL used for viewing the resource on the shop's Online Store. Returns `null` if the resource is currently not published to the Online Store sales channel. */
   onlineStoreUrl?: Maybe<Scalars['URL']>;
   /** The blog's SEO information. */
   seo?: Maybe<Seo>;
@@ -364,7 +375,10 @@ export type BlogMetafieldsArgs = {
   reverse?: InputMaybe<Scalars['Boolean']>;
 };
 
-/** An auto-generated type for paginating through multiple Blogs. */
+/**
+ * An auto-generated type for paginating through multiple Blogs.
+ *
+ */
 export type BlogConnection = {
   __typename?: 'BlogConnection';
   /** A list of edges. */
@@ -373,7 +387,10 @@ export type BlogConnection = {
   pageInfo: PageInfo;
 };
 
-/** An auto-generated type which holds one Blog and a cursor during pagination. */
+/**
+ * An auto-generated type which holds one Blog and a cursor during pagination.
+ *
+ */
 export type BlogEdge = {
   __typename?: 'BlogEdge';
   /** A cursor for use in pagination. */
@@ -392,6 +409,7 @@ export enum BlogSortKeys {
    * During a search (i.e. when the `query` parameter has been specified on the connection) this sorts the
    * results by relevance to the search term(s). When no search query is specified, this sort key is not
    * deterministic and should not be used.
+   *
    */
   Relevance = 'RELEVANCE',
   /** Sort by the `title` value. */
@@ -414,12 +432,7 @@ export enum CardBrand {
   Visa = 'VISA'
 }
 
-/**
- * A cart represents the merchandise that a buyer intends to purchase, and the
- * estimated cost associated with the cart. To learn how to interact with a cart
- * during a customer's session, refer to [Manage a cart with the Storefront
- * API](https://shopify.dev/custom-storefronts/cart).
- */
+/** A cart represents the merchandise that a buyer intends to purchase, and the estimated cost associated with the cart. To learn how to interact with a cart during a customer's session, refer to [Manage a cart with the Storefront API](https://shopify.dev/custom-storefronts/cart). */
 export type Cart = Node & {
   __typename?: 'Cart';
   /** The attributes associated with the cart. Attributes are represented as key-value pairs. */
@@ -432,11 +445,7 @@ export type Cart = Node & {
   createdAt: Scalars['DateTime'];
   /** The discount codes that have been applied to the cart. */
   discountCodes: Array<CartDiscountCode>;
-  /**
-   * The estimated costs that the buyer will pay at checkout. The estimated costs
-   * are subject to change and changes will be reflected at checkout. The
-   * `estimatedCost` field uses the `buyerIdentity` field to determine [international pricing](https://shopify.dev/custom-storefronts/products/international-pricing#create-a-cart).
-   */
+  /** The estimated costs that the buyer will pay at checkout. The estimated costs are subject to change and changes will be reflected at checkout. The `estimatedCost` field uses the `buyerIdentity` field to determine [international pricing](https://shopify.dev/custom-storefronts/products/international-pricing#create-a-cart). */
   estimatedCost: CartEstimatedCost;
   /** A globally-unique identifier. */
   id: Scalars['ID'];
@@ -449,12 +458,7 @@ export type Cart = Node & {
 };
 
 
-/**
- * A cart represents the merchandise that a buyer intends to purchase, and the
- * estimated cost associated with the cart. To learn how to interact with a cart
- * during a customer's session, refer to [Manage a cart with the Storefront
- * API](https://shopify.dev/custom-storefronts/cart).
- */
+/** A cart represents the merchandise that a buyer intends to purchase, and the estimated cost associated with the cart. To learn how to interact with a cart during a customer's session, refer to [Manage a cart with the Storefront API](https://shopify.dev/custom-storefronts/cart). */
 export type CartLinesArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
@@ -499,6 +503,7 @@ export type CartBuyerIdentity = {
  * Buyer identity is used to determine
  * [international pricing](https://shopify.dev/custom-storefronts/products/international-pricing#create-a-checkout)
  * and should match the customer's shipping address.
+ *
  */
 export type CartBuyerIdentityInput = {
   /** The country where the buyer is located. */
@@ -580,6 +585,7 @@ export enum CartErrorCode {
  * The estimated costs that the buyer will pay at checkout.
  * It uses [`CartBuyerIdentity`](https://shopify.dev/api/storefront/reference/cart/cartbuyeridentity) to determine
  * [international pricing](https://shopify.dev/custom-storefronts/products/international-pricing#create-a-cart).
+ *
  */
 export type CartEstimatedCost = {
   __typename?: 'CartEstimatedCost';
@@ -597,10 +603,7 @@ export type CartEstimatedCost = {
 export type CartInput = {
   /** An array of key-value pairs that contains additional information about the cart. */
   attributes?: InputMaybe<Array<AttributeInput>>;
-  /**
-   * The customer associated with the cart. Used to determine [international pricing](https://shopify.dev/custom-storefronts/products/international-pricing#create-a-checkout).
-   * Buyer identity should match the customer's shipping address.
-   */
+  /** The customer associated with the cart. Used to determine [international pricing](https://shopify.dev/custom-storefronts/products/international-pricing#create-a-checkout). Buyer identity should match the customer's shipping address. */
   buyerIdentity?: InputMaybe<CartBuyerIdentityInput>;
   /** The discount codes to apply to the cart. */
   discountCodes?: InputMaybe<Array<Scalars['String']>>;
@@ -617,10 +620,7 @@ export type CartLine = Node & {
   attributes: Array<Attribute>;
   /** The discounts that have been applied to the cart line. */
   discountAllocations: Array<CartDiscountAllocation>;
-  /**
-   * The estimated cost of the merchandise that the buyer will pay for at checkout.
-   * The estimated costs are subject to change and changes will be reflected at checkout.
-   */
+  /** The estimated cost of the merchandise that the buyer will pay for at checkout. The estimated costs are subject to change and changes will be reflected at checkout. */
   estimatedCost: CartLineEstimatedCost;
   /** A globally-unique identifier. */
   id: Scalars['ID'];
@@ -628,14 +628,14 @@ export type CartLine = Node & {
   merchandise: Merchandise;
   /** The quantity of the merchandise that the customer intends to purchase. */
   quantity: Scalars['Int'];
-  /**
-   * The selling plan associated with the cart line and the effect that each
-   * selling plan has on variants when they're purchased.
-   */
+  /** The selling plan associated with the cart line and the effect that each selling plan has on variants when they're purchased. */
   sellingPlanAllocation?: Maybe<SellingPlanAllocation>;
 };
 
-/** An auto-generated type for paginating through multiple CartLines. */
+/**
+ * An auto-generated type for paginating through multiple CartLines.
+ *
+ */
 export type CartLineConnection = {
   __typename?: 'CartLineConnection';
   /** A list of edges. */
@@ -644,7 +644,10 @@ export type CartLineConnection = {
   pageInfo: PageInfo;
 };
 
-/** An auto-generated type which holds one CartLine and a cursor during pagination. */
+/**
+ * An auto-generated type which holds one CartLine and a cursor during pagination.
+ *
+ */
 export type CartLineEdge = {
   __typename?: 'CartLineEdge';
   /** A cursor for use in pagination. */
@@ -744,6 +747,7 @@ export type Checkout = Node & {
    * The available shipping rates for this Checkout.
    * Should only be used when checkout `requiresShipping` is `true` and
    * the shipping address is valid.
+   *
    */
   availableShippingRates?: Maybe<AvailableShippingRates>;
   /** The identity of the customer associated with the checkout. */
@@ -773,28 +777,28 @@ export type Checkout = Node & {
   /** The Order Status Page for this Checkout, null when checkout is not completed. */
   orderStatusUrl?: Maybe<Scalars['URL']>;
   /**
-   * The amount left to be paid. This is equal to the cost of the line items, taxes
-   * and shipping minus discounts and gift cards.
+   * The amount left to be paid. This is equal to the cost of the line items, taxes and shipping minus discounts and gift cards.
    * @deprecated Use `paymentDueV2` instead
    */
   paymentDue: Scalars['Money'];
-  /**
-   * The amount left to be paid. This is equal to the cost of the line items,
-   * duties, taxes and shipping minus discounts and gift cards.
-   */
+  /** The amount left to be paid. This is equal to the cost of the line items, duties, taxes and shipping minus discounts and gift cards. */
   paymentDueV2: MoneyV2;
   /**
    * Whether or not the Checkout is ready and can be completed. Checkouts may
    * have asynchronous operations that can take time to finish. If you want
    * to complete a checkout or ensure all the fields are populated and up to
    * date, polling is required until the value is true.
+   *
    */
   ready: Scalars['Boolean'];
   /** States whether or not the fulfillment requires shipping. */
   requiresShipping: Scalars['Boolean'];
   /** The shipping address to where the line items will be shipped. */
   shippingAddress?: Maybe<MailingAddress>;
-  /** The discounts that have been allocated onto the shipping line by discount applications. */
+  /**
+   * The discounts that have been allocated onto the shipping line by discount applications.
+   *
+   */
   shippingDiscountAllocations: Array<DiscountAllocation>;
   /** Once a shipping rate is selected by the customer it is transitioned to a `shipping_line` object. */
   shippingLine?: Maybe<ShippingRate>;
@@ -858,6 +862,7 @@ export type CheckoutAttributesUpdateInput = {
    * The required attributes are city, province, and country.
    * Full validation of the addresses is still done at completion time. Defaults to `false` with
    * each operation.
+   *
    */
   allowPartialAddresses?: InputMaybe<Scalars['Boolean']>;
   /** A list of extra information that is added to the checkout. */
@@ -887,6 +892,7 @@ export type CheckoutAttributesUpdateV2Input = {
    * The required attributes are city, province, and country.
    * Full validation of the addresses is still done at completion time. Defaults to `false` with
    * each operation.
+   *
    */
   allowPartialAddresses?: InputMaybe<Scalars['Boolean']>;
   /** A list of extra information that is added to the checkout. */
@@ -922,6 +928,7 @@ export type CheckoutBuyerIdentityInput = {
    * The country code of one of the shop's
    * [enabled countries](https://help.shopify.com/en/manual/payments/shopify-payments/multi-currency/setup).
    * For example, `CA`. Including this field creates a checkout in the specified country's currency.
+   *
    */
   countryCode: CountryCode;
 };
@@ -1026,6 +1033,7 @@ export type CheckoutCreateInput = {
    * Allows setting partial addresses on a Checkout, skipping the full validation of attributes.
    * The required attributes are city, province, and country.
    * Full validation of addresses is still done at completion time. Defaults to `null`.
+   *
    */
   allowPartialAddresses?: InputMaybe<Scalars['Boolean']>;
   /** The identity of the customer associated with the checkout. */
@@ -1353,7 +1361,10 @@ export type CheckoutLineItem = Node & {
   variant?: Maybe<ProductVariant>;
 };
 
-/** An auto-generated type for paginating through multiple CheckoutLineItems. */
+/**
+ * An auto-generated type for paginating through multiple CheckoutLineItems.
+ *
+ */
 export type CheckoutLineItemConnection = {
   __typename?: 'CheckoutLineItemConnection';
   /** A list of edges. */
@@ -1362,7 +1373,10 @@ export type CheckoutLineItemConnection = {
   pageInfo: PageInfo;
 };
 
-/** An auto-generated type which holds one CheckoutLineItem and a cursor during pagination. */
+/**
+ * An auto-generated type which holds one CheckoutLineItem and a cursor during pagination.
+ *
+ */
 export type CheckoutLineItemEdge = {
   __typename?: 'CheckoutLineItemEdge';
   /** A cursor for use in pagination. */
@@ -1497,10 +1511,7 @@ export type CheckoutUserError = DisplayableError & {
   message: Scalars['String'];
 };
 
-/**
- * A collection represents a grouping of products that a shop owner can create to
- * organize them or make their shops easier to browse.
- */
+/** A collection represents a grouping of products that a shop owner can create to organize them or make their shops easier to browse. */
 export type Collection = HasMetafields & Node & OnlineStorePublishable & {
   __typename?: 'Collection';
   /** Stripped description of the collection, single line with HTML tags removed. */
@@ -1510,6 +1521,7 @@ export type Collection = HasMetafields & Node & OnlineStorePublishable & {
   /**
    * A human-friendly unique string for the collection automatically generated from its title.
    * Limit of 255 characters.
+   *
    */
   handle: Scalars['String'];
   /** A globally-unique identifier. */
@@ -1524,10 +1536,7 @@ export type Collection = HasMetafields & Node & OnlineStorePublishable & {
    *
    */
   metafields: MetafieldConnection;
-  /**
-   * The URL used for viewing the resource on the shop's Online Store. Returns
-   * `null` if the resource is currently not published to the Online Store sales channel.
-   */
+  /** The URL used for viewing the resource on the shop's Online Store. Returns `null` if the resource is currently not published to the Online Store sales channel. */
   onlineStoreUrl?: Maybe<Scalars['URL']>;
   /** List of products in the collection. */
   products: ProductConnection;
@@ -1538,29 +1547,20 @@ export type Collection = HasMetafields & Node & OnlineStorePublishable & {
 };
 
 
-/**
- * A collection represents a grouping of products that a shop owner can create to
- * organize them or make their shops easier to browse.
- */
+/** A collection represents a grouping of products that a shop owner can create to organize them or make their shops easier to browse. */
 export type CollectionDescriptionArgs = {
   truncateAt?: InputMaybe<Scalars['Int']>;
 };
 
 
-/**
- * A collection represents a grouping of products that a shop owner can create to
- * organize them or make their shops easier to browse.
- */
+/** A collection represents a grouping of products that a shop owner can create to organize them or make their shops easier to browse. */
 export type CollectionMetafieldArgs = {
   key: Scalars['String'];
   namespace: Scalars['String'];
 };
 
 
-/**
- * A collection represents a grouping of products that a shop owner can create to
- * organize them or make their shops easier to browse.
- */
+/** A collection represents a grouping of products that a shop owner can create to organize them or make their shops easier to browse. */
 export type CollectionMetafieldsArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
@@ -1571,10 +1571,7 @@ export type CollectionMetafieldsArgs = {
 };
 
 
-/**
- * A collection represents a grouping of products that a shop owner can create to
- * organize them or make their shops easier to browse.
- */
+/** A collection represents a grouping of products that a shop owner can create to organize them or make their shops easier to browse. */
 export type CollectionProductsArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
@@ -1585,7 +1582,10 @@ export type CollectionProductsArgs = {
   sortKey?: InputMaybe<ProductCollectionSortKeys>;
 };
 
-/** An auto-generated type for paginating through multiple Collections. */
+/**
+ * An auto-generated type for paginating through multiple Collections.
+ *
+ */
 export type CollectionConnection = {
   __typename?: 'CollectionConnection';
   /** A list of edges. */
@@ -1594,7 +1594,10 @@ export type CollectionConnection = {
   pageInfo: PageInfo;
 };
 
-/** An auto-generated type which holds one Collection and a cursor during pagination. */
+/**
+ * An auto-generated type which holds one Collection and a cursor during pagination.
+ *
+ */
 export type CollectionEdge = {
   __typename?: 'CollectionEdge';
   /** A cursor for use in pagination. */
@@ -1611,6 +1614,7 @@ export enum CollectionSortKeys {
    * During a search (i.e. when the `query` parameter has been specified on the connection) this sorts the
    * results by relevance to the search term(s). When no search query is specified, this sort key is not
    * deterministic and should not be used.
+   *
    */
   Relevance = 'RELEVANCE',
   /** Sort by the `title` value. */
@@ -1647,7 +1651,10 @@ export type CommentAuthor = {
   name: Scalars['String'];
 };
 
-/** An auto-generated type for paginating through multiple Comments. */
+/**
+ * An auto-generated type for paginating through multiple Comments.
+ *
+ */
 export type CommentConnection = {
   __typename?: 'CommentConnection';
   /** A list of edges. */
@@ -1656,7 +1663,10 @@ export type CommentConnection = {
   pageInfo: PageInfo;
 };
 
-/** An auto-generated type which holds one Comment and a cursor during pagination. */
+/**
+ * An auto-generated type which holds one Comment and a cursor during pagination.
+ *
+ */
 export type CommentEdge = {
   __typename?: 'CommentEdge';
   /** A cursor for use in pagination. */
@@ -2196,18 +2206,14 @@ export type CreditCard = {
 /**
  * Specifies the fields required to complete a checkout with
  * a Shopify vaulted credit card payment.
+ *
  */
 export type CreditCardPaymentInput = {
   /** The amount of the payment. */
   amount: Scalars['Money'];
   /** The billing address for the payment. */
   billingAddress: MailingAddressInput;
-  /**
-   * A unique client generated key used to avoid duplicate charges. When a
-   * duplicate payment is found, the original is returned instead of creating a new
-   * one. For more information, refer to [Idempotent
-   * requests](https://shopify.dev/api/usage/idempotent-requests).
-   */
+  /** A unique client generated key used to avoid duplicate charges. When a duplicate payment is found, the original is returned instead of creating a new one. For more information, refer to [Idempotent requests](https://shopify.dev/api/usage/idempotent-requests). */
   idempotencyKey: Scalars['String'];
   /** Executes the payment in test mode if possible. Defaults to `false`. */
   test?: InputMaybe<Scalars['Boolean']>;
@@ -2218,16 +2224,12 @@ export type CreditCardPaymentInput = {
 /**
  * Specifies the fields required to complete a checkout with
  * a Shopify vaulted credit card payment.
+ *
  */
 export type CreditCardPaymentInputV2 = {
   /** The billing address for the payment. */
   billingAddress: MailingAddressInput;
-  /**
-   * A unique client generated key used to avoid duplicate charges. When a
-   * duplicate payment is found, the original is returned instead of creating a new
-   * one. For more information, refer to [Idempotent
-   * requests](https://shopify.dev/api/usage/idempotent-requests).
-   */
+  /** A unique client generated key used to avoid duplicate charges. When a duplicate payment is found, the original is returned instead of creating a new one. For more information, refer to [Idempotent requests](https://shopify.dev/api/usage/idempotent-requests). */
   idempotencyKey: Scalars['String'];
   /** The amount and currency of the payment. */
   paymentAmount: MoneyInput;
@@ -2263,9 +2265,9 @@ export type Currency = {
 };
 
 /**
- * The three-letter currency codes that represent the world currencies used in
- * stores. These include standard ISO 4217 codes, legacy codes,
+ * The three-letter currency codes that represent the world currencies used in stores. These include standard ISO 4217 codes, legacy codes,
  * and non-standard codes.
+ *
  */
 export enum CurrencyCode {
   /** United Arab Emirates Dirham (AED). */
@@ -2588,11 +2590,7 @@ export enum CurrencyCode {
   Zmw = 'ZMW'
 }
 
-/**
- * A customer represents a customer account with the shop. Customer accounts store
- * contact information for the customer, saving logged-in customers the trouble of
- * having to provide it at every checkout.
- */
+/** A customer represents a customer account with the shop. Customer accounts store contact information for the customer, saving logged-in customers the trouble of having to provide it at every checkout. */
 export type Customer = HasMetafields & {
   __typename?: 'Customer';
   /** Indicates whether the customer has consented to be sent marketing material via email. */
@@ -2630,6 +2628,7 @@ export type Customer = HasMetafields & {
   /**
    * A comma separated list of tags that have been added to the customer.
    * Additional access scope required: unauthenticated_read_customer_tags.
+   *
    */
   tags: Array<Scalars['String']>;
   /** The date and time when the customer information was updated. */
@@ -2637,11 +2636,7 @@ export type Customer = HasMetafields & {
 };
 
 
-/**
- * A customer represents a customer account with the shop. Customer accounts store
- * contact information for the customer, saving logged-in customers the trouble of
- * having to provide it at every checkout.
- */
+/** A customer represents a customer account with the shop. Customer accounts store contact information for the customer, saving logged-in customers the trouble of having to provide it at every checkout. */
 export type CustomerAddressesArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
@@ -2651,22 +2646,14 @@ export type CustomerAddressesArgs = {
 };
 
 
-/**
- * A customer represents a customer account with the shop. Customer accounts store
- * contact information for the customer, saving logged-in customers the trouble of
- * having to provide it at every checkout.
- */
+/** A customer represents a customer account with the shop. Customer accounts store contact information for the customer, saving logged-in customers the trouble of having to provide it at every checkout. */
 export type CustomerMetafieldArgs = {
   key: Scalars['String'];
   namespace: Scalars['String'];
 };
 
 
-/**
- * A customer represents a customer account with the shop. Customer accounts store
- * contact information for the customer, saving logged-in customers the trouble of
- * having to provide it at every checkout.
- */
+/** A customer represents a customer account with the shop. Customer accounts store contact information for the customer, saving logged-in customers the trouble of having to provide it at every checkout. */
 export type CustomerMetafieldsArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
@@ -2677,11 +2664,7 @@ export type CustomerMetafieldsArgs = {
 };
 
 
-/**
- * A customer represents a customer account with the shop. Customer accounts store
- * contact information for the customer, saving logged-in customers the trouble of
- * having to provide it at every checkout.
- */
+/** A customer represents a customer account with the shop. Customer accounts store contact information for the customer, saving logged-in customers the trouble of having to provide it at every checkout. */
 export type CustomerOrdersArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
@@ -2845,6 +2828,7 @@ export type CustomerCreateInput = {
    * A unique phone number for the customer.
    *
    * Formatted using E.164 standard. For example, _+16135551111_.
+   *
    */
   phone?: InputMaybe<Scalars['String']>;
 };
@@ -2979,6 +2963,7 @@ export type CustomerUpdateInput = {
    * A unique phone number for the customer.
    *
    * Formatted using E.164 standard. For example, _+16135551111_. To remove the phone number, specify `null`.
+   *
    */
   phone?: InputMaybe<Scalars['String']>;
 };
@@ -2991,6 +2976,7 @@ export type CustomerUpdatePayload = {
   /**
    * The newly created customer access token. If the customer's password is updated, all previous access tokens
    * (including the one used to perform this mutation) become invalid, and a new token is generated.
+   *
    */
   customerAccessToken?: Maybe<CustomerAccessToken>;
   /** The list of errors that occurred from executing the mutation. */
@@ -3025,7 +3011,10 @@ export enum DigitalWallet {
   ShopifyPay = 'SHOPIFY_PAY'
 }
 
-/** An amount discounting the line that has been allocated by a discount. */
+/**
+ * An amount discounting the line that has been allocated by a discount.
+ *
+ */
 export type DiscountAllocation = {
   __typename?: 'DiscountAllocation';
   /** Amount of discount allocated. */
@@ -3037,6 +3026,7 @@ export type DiscountAllocation = {
 /**
  * Discount applications capture the intentions of a discount source at
  * the time of application.
+ *
  */
 export type DiscountApplication = {
   /** The method by which the discount's value is allocated to its entitled items. */
@@ -3059,7 +3049,10 @@ export enum DiscountApplicationAllocationMethod {
   One = 'ONE'
 }
 
-/** An auto-generated type for paginating through multiple DiscountApplications. */
+/**
+ * An auto-generated type for paginating through multiple DiscountApplications.
+ *
+ */
 export type DiscountApplicationConnection = {
   __typename?: 'DiscountApplicationConnection';
   /** A list of edges. */
@@ -3068,7 +3061,10 @@ export type DiscountApplicationConnection = {
   pageInfo: PageInfo;
 };
 
-/** An auto-generated type which holds one DiscountApplication and a cursor during pagination. */
+/**
+ * An auto-generated type which holds one DiscountApplication and a cursor during pagination.
+ *
+ */
 export type DiscountApplicationEdge = {
   __typename?: 'DiscountApplicationEdge';
   /** A cursor for use in pagination. */
@@ -3080,6 +3076,7 @@ export type DiscountApplicationEdge = {
 /**
  * Which lines on the order that the discount is allocated over, of the type
  * defined by the Discount Application's target_type.
+ *
  */
 export enum DiscountApplicationTargetSelection {
   /** The discount is allocated onto all the lines. */
@@ -3090,7 +3087,10 @@ export enum DiscountApplicationTargetSelection {
   Explicit = 'EXPLICIT'
 }
 
-/** The type of line (i.e. line item or shipping line) on an order that the discount is applicable towards. */
+/**
+ * The type of line (i.e. line item or shipping line) on an order that the discount is applicable towards.
+ *
+ */
 export enum DiscountApplicationTargetType {
   /** The discount applies onto line items. */
   LineItem = 'LINE_ITEM',
@@ -3101,6 +3101,7 @@ export enum DiscountApplicationTargetType {
 /**
  * Discount code applications capture the intentions of a discount code at
  * the time that it is applied.
+ *
  */
 export type DiscountCodeApplication = DiscountApplication & {
   __typename?: 'DiscountCodeApplication';
@@ -3188,9 +3189,8 @@ export type FilterValue = {
   /**
    * An input object that can be used to filter by this value on the parent field.
    *
-   * The value is provided as a helper for building dynamic filtering UI. For
-   * example, if you have a list of selected `FilterValue` objects, you can combine
-   * their respective `input` values to use in a subsequent query.
+   * The value is provided as a helper for building dynamic filtering UI. For example, if you have a list of selected `FilterValue` objects, you can combine their respective `input` values to use in a subsequent query.
+   *
    */
   input: Scalars['JSON'];
   /** A human-friendly string for this filter value. */
@@ -3207,6 +3207,7 @@ export type Fulfillment = {
   /**
    * Tracking information associated with the fulfillment,
    * such as the tracking number and tracking URL.
+   *
    */
   trackingInfo: Array<FulfillmentTrackingInfo>;
 };
@@ -3236,7 +3237,10 @@ export type FulfillmentLineItem = {
   quantity: Scalars['Int'];
 };
 
-/** An auto-generated type for paginating through multiple FulfillmentLineItems. */
+/**
+ * An auto-generated type for paginating through multiple FulfillmentLineItems.
+ *
+ */
 export type FulfillmentLineItemConnection = {
   __typename?: 'FulfillmentLineItemConnection';
   /** A list of edges. */
@@ -3245,7 +3249,10 @@ export type FulfillmentLineItemConnection = {
   pageInfo: PageInfo;
 };
 
-/** An auto-generated type which holds one FulfillmentLineItem and a cursor during pagination. */
+/**
+ * An auto-generated type which holds one FulfillmentLineItem and a cursor during pagination.
+ *
+ */
 export type FulfillmentLineItemEdge = {
   __typename?: 'FulfillmentLineItemEdge';
   /** A cursor for use in pagination. */
@@ -3314,6 +3321,7 @@ export type Image = {
    * The location of the original image as a URL.
    *
    * If there are any existing transformations in the original source URL, they will remain and not be stripped.
+   *
    * @deprecated Use `url` instead
    */
   originalSrc: Scalars['URL'];
@@ -3327,6 +3335,7 @@ export type Image = {
    *
    * All transformation arguments are considered "best-effort". If they can be applied to an image, they will be.
    * Otherwise any transformations which an image type does not support will be ignored.
+   *
    * @deprecated Use `url(transform:)` instead
    */
   transformedSrc: Scalars['URL'];
@@ -3335,11 +3344,10 @@ export type Image = {
    *
    * If no transform options are specified, then the original image will be preserved including any pre-applied transforms.
    *
-   * All transformation options are considered "best-effort". Any transformation
-   * that the original image type doesn't support will be ignored.
+   * All transformation options are considered "best-effort". Any transformation that the original image type doesn't support will be ignored.
    *
-   * If you need multiple variations of the same image, then you can use [GraphQL
-   * aliases](https://graphql.org/learn/queries/#aliases).
+   * If you need multiple variations of the same image, then you can use [GraphQL aliases](https://graphql.org/learn/queries/#aliases).
+   *
    */
   url: Scalars['URL'];
   /** The original width of the image in pixels. Returns `null` if the image is not hosted by Shopify. */
@@ -3362,7 +3370,10 @@ export type ImageUrlArgs = {
   transform?: InputMaybe<ImageTransformInput>;
 };
 
-/** An auto-generated type for paginating through multiple Images. */
+/**
+ * An auto-generated type for paginating through multiple Images.
+ *
+ */
 export type ImageConnection = {
   __typename?: 'ImageConnection';
   /** A list of edges. */
@@ -3381,7 +3392,10 @@ export enum ImageContentType {
   Webp = 'WEBP'
 }
 
-/** An auto-generated type which holds one Image and a cursor during pagination. */
+/**
+ * An auto-generated type which holds one Image and a cursor during pagination.
+ *
+ */
 export type ImageEdge = {
   __typename?: 'ImageEdge';
   /** A cursor for use in pagination. */
@@ -3393,22 +3407,32 @@ export type ImageEdge = {
 /**
  * The available options for transforming an image.
  *
- * All transformation options are considered "best-effort". Any transformation that
- * the original image type doesn't support will be ignored.
+ * All transformation options are considered "best-effort". Any transformation that the original image type doesn't support will be ignored.
+ *
  */
 export type ImageTransformInput = {
   /** Crop the image according to the specified region. */
   crop?: InputMaybe<CropRegion>;
-  /** Image height in pixels between 1 and 5760. */
+  /**
+   * Image height in pixels between 1 and 5760.
+   *
+   */
   maxHeight?: InputMaybe<Scalars['Int']>;
-  /** Image width in pixels between 1 and 5760. */
+  /**
+   * Image width in pixels between 1 and 5760.
+   *
+   */
   maxWidth?: InputMaybe<Scalars['Int']>;
   /**
    * Convert the source image into the preferred content type.
    * Supported conversions: `.svg` to `.png`, any file type to `.jpg`, and any file type to `.webp`.
+   *
    */
   preferredContentType?: InputMaybe<ImageContentType>;
-  /** Image size multiplier for high-resolution retina displays. Must be within 1..3. */
+  /**
+   * Image size multiplier for high-resolution retina displays. Must be within 1..3.
+   *
+   */
   scale?: InputMaybe<Scalars['Int']>;
 };
 
@@ -3432,7 +3456,10 @@ export type Location = Node & {
   name: Scalars['String'];
 };
 
-/** Represents the address of a location. */
+/**
+ * Represents the address of a location.
+ *
+ */
 export type LocationAddress = {
   __typename?: 'LocationAddress';
   /** The first line of the address for the location. */
@@ -3455,13 +3482,19 @@ export type LocationAddress = {
   phone?: Maybe<Scalars['String']>;
   /** The province of the location. */
   province?: Maybe<Scalars['String']>;
-  /** The code for the province, state, or district of the address of the location. */
+  /**
+   * The code for the province, state, or district of the address of the location.
+   *
+   */
   provinceCode?: Maybe<Scalars['String']>;
   /** The ZIP code of the location. */
   zip?: Maybe<Scalars['String']>;
 };
 
-/** An auto-generated type for paginating through multiple Locations. */
+/**
+ * An auto-generated type for paginating through multiple Locations.
+ *
+ */
 export type LocationConnection = {
   __typename?: 'LocationConnection';
   /** A list of edges. */
@@ -3470,7 +3503,10 @@ export type LocationConnection = {
   pageInfo: PageInfo;
 };
 
-/** An auto-generated type which holds one Location and a cursor during pagination. */
+/**
+ * An auto-generated type which holds one Location and a cursor during pagination.
+ *
+ */
 export type LocationEdge = {
   __typename?: 'LocationEdge';
   /** A cursor for use in pagination. */
@@ -3494,20 +3530,36 @@ export enum LocationSortKeys {
 /** Represents a mailing address for customers and shipping. */
 export type MailingAddress = Node & {
   __typename?: 'MailingAddress';
-  /** The first line of the address. Typically the street address or PO Box number. */
+  /**
+   * The first line of the address. Typically the street address or PO Box number.
+   *
+   */
   address1?: Maybe<Scalars['String']>;
-  /** The second line of the address. Typically the number of the apartment, suite, or unit. */
+  /**
+   * The second line of the address. Typically the number of the apartment, suite, or unit.
+   *
+   */
   address2?: Maybe<Scalars['String']>;
-  /** The name of the city, district, village, or town. */
+  /**
+   * The name of the city, district, village, or town.
+   *
+   */
   city?: Maybe<Scalars['String']>;
-  /** The name of the customer's company or organization. */
+  /**
+   * The name of the customer's company or organization.
+   *
+   */
   company?: Maybe<Scalars['String']>;
-  /** The name of the country. */
+  /**
+   * The name of the country.
+   *
+   */
   country?: Maybe<Scalars['String']>;
   /**
    * The two-letter code for the country of the address.
    *
    * For example, US.
+   *
    * @deprecated Use `countryCodeV2` instead
    */
   countryCode?: Maybe<Scalars['String']>;
@@ -3515,6 +3567,7 @@ export type MailingAddress = Node & {
    * The two-letter code for the country of the address.
    *
    * For example, US.
+   *
    */
   countryCodeV2?: Maybe<CountryCode>;
   /** The first name of the customer. */
@@ -3531,12 +3584,16 @@ export type MailingAddress = Node & {
   latitude?: Maybe<Scalars['Float']>;
   /** The longitude coordinate of the customer address. */
   longitude?: Maybe<Scalars['Float']>;
-  /** The full name of the customer, based on firstName and lastName. */
+  /**
+   * The full name of the customer, based on firstName and lastName.
+   *
+   */
   name?: Maybe<Scalars['String']>;
   /**
    * A unique phone number for the customer.
    *
    * Formatted using E.164 standard. For example, _+16135551111_.
+   *
    */
   phone?: Maybe<Scalars['String']>;
   /** The region of the address, such as the province, state, or district. */
@@ -3545,6 +3602,7 @@ export type MailingAddress = Node & {
    * The two-letter code for the region.
    *
    * For example, ON.
+   *
    */
   provinceCode?: Maybe<Scalars['String']>;
   /** The zip or postal code of the address. */
@@ -3558,7 +3616,10 @@ export type MailingAddressFormattedArgs = {
   withName?: InputMaybe<Scalars['Boolean']>;
 };
 
-/** An auto-generated type for paginating through multiple MailingAddresses. */
+/**
+ * An auto-generated type for paginating through multiple MailingAddresses.
+ *
+ */
 export type MailingAddressConnection = {
   __typename?: 'MailingAddressConnection';
   /** A list of edges. */
@@ -3567,7 +3628,10 @@ export type MailingAddressConnection = {
   pageInfo: PageInfo;
 };
 
-/** An auto-generated type which holds one MailingAddress and a cursor during pagination. */
+/**
+ * An auto-generated type which holds one MailingAddress and a cursor during pagination.
+ *
+ */
 export type MailingAddressEdge = {
   __typename?: 'MailingAddressEdge';
   /** A cursor for use in pagination. */
@@ -3578,13 +3642,25 @@ export type MailingAddressEdge = {
 
 /** Specifies the fields accepted to create or update a mailing address. */
 export type MailingAddressInput = {
-  /** The first line of the address. Typically the street address or PO Box number. */
+  /**
+   * The first line of the address. Typically the street address or PO Box number.
+   *
+   */
   address1?: InputMaybe<Scalars['String']>;
-  /** The second line of the address. Typically the number of the apartment, suite, or unit. */
+  /**
+   * The second line of the address. Typically the number of the apartment, suite, or unit.
+   *
+   */
   address2?: InputMaybe<Scalars['String']>;
-  /** The name of the city, district, village, or town. */
+  /**
+   * The name of the city, district, village, or town.
+   *
+   */
   city?: InputMaybe<Scalars['String']>;
-  /** The name of the customer's company or organization. */
+  /**
+   * The name of the customer's company or organization.
+   *
+   */
   company?: InputMaybe<Scalars['String']>;
   /** The name of the country. */
   country?: InputMaybe<Scalars['String']>;
@@ -3596,6 +3672,7 @@ export type MailingAddressInput = {
    * A unique phone number for the customer.
    *
    * Formatted using E.164 standard. For example, _+16135551111_.
+   *
    */
   phone?: InputMaybe<Scalars['String']>;
   /** The region of the address, such as the province, state, or district. */
@@ -3604,7 +3681,10 @@ export type MailingAddressInput = {
   zip?: InputMaybe<Scalars['String']>;
 };
 
-/** Manual discount applications capture the intentions of a discount that was manually created. */
+/**
+ * Manual discount applications capture the intentions of a discount that was manually created.
+ *
+ */
 export type ManualDiscountApplication = DiscountApplication & {
   __typename?: 'ManualDiscountApplication';
   /** The method by which the discount's value is allocated to its entitled items. */
@@ -3631,7 +3711,10 @@ export type Media = {
   previewImage?: Maybe<Image>;
 };
 
-/** An auto-generated type for paginating through multiple Media. */
+/**
+ * An auto-generated type for paginating through multiple Media.
+ *
+ */
 export type MediaConnection = {
   __typename?: 'MediaConnection';
   /** A list of edges. */
@@ -3652,7 +3735,10 @@ export enum MediaContentType {
   Video = 'VIDEO'
 }
 
-/** An auto-generated type which holds one Media and a cursor during pagination. */
+/**
+ * An auto-generated type which holds one Media and a cursor during pagination.
+ *
+ */
 export type MediaEdge = {
   __typename?: 'MediaEdge';
   /** A cursor for use in pagination. */
@@ -3690,6 +3776,7 @@ export type Merchandise = ProductVariant;
 /**
  * Metafields represent custom metadata attached to a resource. Metafields can be sorted into namespaces and are
  * comprised of keys, values, and value types.
+ *
  */
 export type Metafield = Node & {
   __typename?: 'Metafield';
@@ -3710,6 +3797,7 @@ export type Metafield = Node & {
   /**
    * The type name of the metafield.
    * See the list of [supported types](https://shopify.dev/apps/metafields/definitions/types).
+   *
    */
   type: Scalars['String'];
   /** The date and time when the storefront metafield was updated. */
@@ -3718,7 +3806,10 @@ export type Metafield = Node & {
   value: Scalars['String'];
 };
 
-/** An auto-generated type for paginating through multiple Metafields. */
+/**
+ * An auto-generated type for paginating through multiple Metafields.
+ *
+ */
 export type MetafieldConnection = {
   __typename?: 'MetafieldConnection';
   /** A list of edges. */
@@ -3727,7 +3818,10 @@ export type MetafieldConnection = {
   pageInfo: PageInfo;
 };
 
-/** An auto-generated type which holds one Metafield and a cursor during pagination. */
+/**
+ * An auto-generated type which holds one Metafield and a cursor during pagination.
+ *
+ */
 export type MetafieldEdge = {
   __typename?: 'MetafieldEdge';
   /** A cursor for use in pagination. */
@@ -3743,6 +3837,7 @@ export type MetafieldEdge = {
  * - `number_integer`
  * - `number_decimal`
  * - `single_line_text_field`
+ *
  */
 export type MetafieldFilter = {
   /** The key of the metafield to filter on. */
@@ -3756,7 +3851,10 @@ export type MetafieldFilter = {
 /** A resource that the metafield belongs to. */
 export type MetafieldParentResource = Article | Blog | Collection | Customer | Order | Page | Product | ProductVariant | Shop;
 
-/** Returns the resource which is being referred to by a metafield. */
+/**
+ * Returns the resource which is being referred to by a metafield.
+ *
+ */
 export type MetafieldReference = MediaImage | Page | Product | ProductVariant;
 
 /** Represents a Shopify hosted 3D model. */
@@ -3795,7 +3893,10 @@ export type MoneyInput = {
   currencyCode: CurrencyCode;
 };
 
-/** A monetary value with currency. */
+/**
+ * A monetary value with currency.
+ *
+ */
 export type MoneyV2 = {
   __typename?: 'MoneyV2';
   /** Decimal money amount. */
@@ -3814,6 +3915,7 @@ export type Mutation = {
    * Buyer identity is used to determine
    * [international pricing](https://shopify.dev/custom-storefronts/products/international-pricing#create-a-checkout)
    * and should match the customer's shipping address.
+   *
    */
   cartBuyerIdentityUpdate?: Maybe<CartBuyerIdentityUpdatePayload>;
   /** Creates a new cart. */
@@ -3835,21 +3937,14 @@ export type Mutation = {
   checkoutAttributesUpdate?: Maybe<CheckoutAttributesUpdatePayload>;
   /** Updates the attributes of a checkout if `allowPartialAddresses` is `true`. */
   checkoutAttributesUpdateV2?: Maybe<CheckoutAttributesUpdateV2Payload>;
-  /**
-   * Completes a checkout without providing payment information. You can use this
-   * mutation for free items or items whose purchase price is covered by a gift card.
-   */
+  /** Completes a checkout without providing payment information. You can use this mutation for free items or items whose purchase price is covered by a gift card. */
   checkoutCompleteFree?: Maybe<CheckoutCompleteFreePayload>;
   /**
    * Completes a checkout using a credit card token from Shopify's Vault.
    * @deprecated Use `checkoutCompleteWithCreditCardV2` instead
    */
   checkoutCompleteWithCreditCard?: Maybe<CheckoutCompleteWithCreditCardPayload>;
-  /**
-   * Completes a checkout using a credit card token from Shopify's card vault.
-   * Before you can complete checkouts using CheckoutCompleteWithCreditCardV2, you
-   * need to  [_request payment processing_](https://shopify.dev/apps/channels/getting-started#request-payment-processing).
-   */
+  /** Completes a checkout using a credit card token from Shopify's card vault. Before you can complete checkouts using CheckoutCompleteWithCreditCardV2, you need to  [_request payment processing_](https://shopify.dev/apps/channels/getting-started#request-payment-processing). */
   checkoutCompleteWithCreditCardV2?: Maybe<CheckoutCompleteWithCreditCardV2Payload>;
   /**
    * Completes a checkout with a tokenized payment.
@@ -3929,12 +4024,14 @@ export type Mutation = {
   /**
    * Creates a customer access token.
    * The customer access token is required to modify the customer object in any way.
+   *
    */
   customerAccessTokenCreate?: Maybe<CustomerAccessTokenCreatePayload>;
   /**
    * Creates a customer access token using a multipass token instead of email and password.
    * A customer record is created if customer does not exist. If a customer record already
    * exists but the record is disabled, then it's enabled.
+   *
    */
   customerAccessTokenCreateWithMultipass?: Maybe<CustomerAccessTokenCreateWithMultipassPayload>;
   /** Permanently destroys a customer access token. */
@@ -3944,6 +4041,7 @@ export type Mutation = {
    *
    * Access token renewal must happen *before* a token expires.
    * If a token has already expired, a new one should be created instead via `customerAccessTokenCreate`.
+   *
    */
   customerAccessTokenRenew?: Maybe<CustomerAccessTokenRenewPayload>;
   /** Activates a customer. */
@@ -4329,6 +4427,7 @@ export type MutationCustomerUpdateArgs = {
  * [Relay specification](https://relay.dev/graphql/objectidentification.htm#sec-Node-Interface).
  * This interface is used by the [node](https://shopify.dev/api/admin-graphql/unstable/queries/node)
  * and [nodes](https://shopify.dev/api/admin-graphql/unstable/queries/nodes) queries.
+ *
  */
 export type Node = {
   /** A globally-unique identifier. */
@@ -4337,18 +4436,11 @@ export type Node = {
 
 /** Represents a resource that can be published to the Online Store sales channel. */
 export type OnlineStorePublishable = {
-  /**
-   * The URL used for viewing the resource on the shop's Online Store. Returns
-   * `null` if the resource is currently not published to the Online Store sales channel.
-   */
+  /** The URL used for viewing the resource on the shop's Online Store. Returns `null` if the resource is currently not published to the Online Store sales channel. */
   onlineStoreUrl?: Maybe<Scalars['URL']>;
 };
 
-/**
- * An order is a customer’s completed request to purchase one or more products from
- * a shop. An order is created when a customer completes the checkout process,
- * during which time they provides an email address, billing address and payment information.
- */
+/** An order is a customer’s completed request to purchase one or more products from a shop. An order is created when a customer completes the checkout process, during which time they provides an email address, billing address and payment information. */
 export type Order = HasMetafields & Node & {
   __typename?: 'Order';
   /** The reason for the order's cancellation. Returns `null` if the order wasn't canceled. */
@@ -4357,12 +4449,7 @@ export type Order = HasMetafields & Node & {
   canceledAt?: Maybe<Scalars['DateTime']>;
   /** The code of the currency used for the payment. */
   currencyCode: CurrencyCode;
-  /**
-   * The subtotal of line items and their discounts, excluding line items that have
-   * been removed. Does not contain order-level discounts, duties, shipping costs,
-   * or shipping discounts. Taxes are not included unless the order is a
-   * taxes-included order.
-   */
+  /** The subtotal of line items and their discounts, excluding line items that have been removed. Does not contain order-level discounts, duties, shipping costs, or shipping discounts. Taxes are not included unless the order is a taxes-included order. */
   currentSubtotalPrice: MoneyV2;
   /** The total cost of duties for the order, including refunds. */
   currentTotalDuties?: Maybe<MoneyV2>;
@@ -4399,6 +4486,7 @@ export type Order = HasMetafields & Node & {
   /**
    * Unique identifier for the order that appears on the order.
    * For example, _#1000_ or _Store1001.
+   *
    */
   name: Scalars['String'];
   /** A unique numeric identifier for the order for use by shop owner and customer. */
@@ -4413,11 +4501,15 @@ export type Order = HasMetafields & Node & {
    * The date and time when the order was imported.
    * This value can be set to dates in the past when importing from other systems.
    * If no value is provided, it will be auto-generated based on current date and time.
+   *
    */
   processedAt: Scalars['DateTime'];
   /** The address to where the order will be shipped. */
   shippingAddress?: Maybe<MailingAddress>;
-  /** The discounts that have been allocated onto the shipping line by discount applications. */
+  /**
+   * The discounts that have been allocated onto the shipping line by discount applications.
+   *
+   */
   shippingDiscountAllocations: Array<DiscountAllocation>;
   /** The unique URL for the order's status page. */
   statusUrl: Scalars['URL'];
@@ -4461,11 +4553,7 @@ export type Order = HasMetafields & Node & {
 };
 
 
-/**
- * An order is a customer’s completed request to purchase one or more products from
- * a shop. An order is created when a customer completes the checkout process,
- * during which time they provides an email address, billing address and payment information.
- */
+/** An order is a customer’s completed request to purchase one or more products from a shop. An order is created when a customer completes the checkout process, during which time they provides an email address, billing address and payment information. */
 export type OrderDiscountApplicationsArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
@@ -4475,11 +4563,7 @@ export type OrderDiscountApplicationsArgs = {
 };
 
 
-/**
- * An order is a customer’s completed request to purchase one or more products from
- * a shop. An order is created when a customer completes the checkout process,
- * during which time they provides an email address, billing address and payment information.
- */
+/** An order is a customer’s completed request to purchase one or more products from a shop. An order is created when a customer completes the checkout process, during which time they provides an email address, billing address and payment information. */
 export type OrderLineItemsArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
@@ -4489,22 +4573,14 @@ export type OrderLineItemsArgs = {
 };
 
 
-/**
- * An order is a customer’s completed request to purchase one or more products from
- * a shop. An order is created when a customer completes the checkout process,
- * during which time they provides an email address, billing address and payment information.
- */
+/** An order is a customer’s completed request to purchase one or more products from a shop. An order is created when a customer completes the checkout process, during which time they provides an email address, billing address and payment information. */
 export type OrderMetafieldArgs = {
   key: Scalars['String'];
   namespace: Scalars['String'];
 };
 
 
-/**
- * An order is a customer’s completed request to purchase one or more products from
- * a shop. An order is created when a customer completes the checkout process,
- * during which time they provides an email address, billing address and payment information.
- */
+/** An order is a customer’s completed request to purchase one or more products from a shop. An order is created when a customer completes the checkout process, during which time they provides an email address, billing address and payment information. */
 export type OrderMetafieldsArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
@@ -4515,11 +4591,7 @@ export type OrderMetafieldsArgs = {
 };
 
 
-/**
- * An order is a customer’s completed request to purchase one or more products from
- * a shop. An order is created when a customer completes the checkout process,
- * during which time they provides an email address, billing address and payment information.
- */
+/** An order is a customer’s completed request to purchase one or more products from a shop. An order is created when a customer completes the checkout process, during which time they provides an email address, billing address and payment information. */
 export type OrderSuccessfulFulfillmentsArgs = {
   first?: InputMaybe<Scalars['Int']>;
 };
@@ -4538,7 +4610,10 @@ export enum OrderCancelReason {
   Other = 'OTHER'
 }
 
-/** An auto-generated type for paginating through multiple Orders. */
+/**
+ * An auto-generated type for paginating through multiple Orders.
+ *
+ */
 export type OrderConnection = {
   __typename?: 'OrderConnection';
   /** A list of edges. */
@@ -4547,7 +4622,10 @@ export type OrderConnection = {
   pageInfo: PageInfo;
 };
 
-/** An auto-generated type which holds one Order and a cursor during pagination. */
+/**
+ * An auto-generated type which holds one Order and a cursor during pagination.
+ *
+ */
 export type OrderEdge = {
   __typename?: 'OrderEdge';
   /** A cursor for use in pagination. */
@@ -4578,10 +4656,7 @@ export enum OrderFinancialStatus {
 export enum OrderFulfillmentStatus {
   /** Displayed as **Fulfilled**. All of the items in the order have been fulfilled. */
   Fulfilled = 'FULFILLED',
-  /**
-   * Displayed as **In progress**. Some of the items in the order have been
-   * fulfilled, or a request for fulfillment has been sent to the fulfillment service.
-   */
+  /** Displayed as **In progress**. Some of the items in the order have been fulfilled, or a request for fulfillment has been sent to the fulfillment service. */
   InProgress = 'IN_PROGRESS',
   /** Displayed as **On hold**. All of the unfulfilled items in this order are on hold. */
   OnHold = 'ON_HOLD',
@@ -4589,10 +4664,7 @@ export enum OrderFulfillmentStatus {
   Open = 'OPEN',
   /** Displayed as **Partially fulfilled**. Some of the items in the order have been fulfilled. */
   PartiallyFulfilled = 'PARTIALLY_FULFILLED',
-  /**
-   * Displayed as **Pending fulfillment**. A request for fulfillment of some items
-   * awaits a response from the fulfillment service. Replaced by "IN_PROGRESS" status.
-   */
+  /** Displayed as **Pending fulfillment**. A request for fulfillment of some items awaits a response from the fulfillment service. Replaced by "IN_PROGRESS" status. */
   PendingFulfillment = 'PENDING_FULFILLMENT',
   /** Displayed as **Restocked**. All of the items in the order have been restocked. Replaced by "UNFULFILLED" status. */
   Restocked = 'RESTOCKED',
@@ -4613,11 +4685,7 @@ export type OrderLineItem = {
   discountAllocations: Array<DiscountAllocation>;
   /** The total price of the line item, including discounts, and displayed in the presentment currency. */
   discountedTotalPrice: MoneyV2;
-  /**
-   * The total price of the line item, not including any discounts. The total price
-   * is calculated using the original unit price multiplied by the quantity, and it
-   * is displayed in the presentment currency.
-   */
+  /** The total price of the line item, not including any discounts. The total price is calculated using the original unit price multiplied by the quantity, and it is displayed in the presentment currency. */
   originalTotalPrice: MoneyV2;
   /** The number of products variants associated to the line item. */
   quantity: Scalars['Int'];
@@ -4627,7 +4695,10 @@ export type OrderLineItem = {
   variant?: Maybe<ProductVariant>;
 };
 
-/** An auto-generated type for paginating through multiple OrderLineItems. */
+/**
+ * An auto-generated type for paginating through multiple OrderLineItems.
+ *
+ */
 export type OrderLineItemConnection = {
   __typename?: 'OrderLineItemConnection';
   /** A list of edges. */
@@ -4636,7 +4707,10 @@ export type OrderLineItemConnection = {
   pageInfo: PageInfo;
 };
 
-/** An auto-generated type which holds one OrderLineItem and a cursor during pagination. */
+/**
+ * An auto-generated type which holds one OrderLineItem and a cursor during pagination.
+ *
+ */
 export type OrderLineItemEdge = {
   __typename?: 'OrderLineItemEdge';
   /** A cursor for use in pagination. */
@@ -4655,16 +4729,14 @@ export enum OrderSortKeys {
    * During a search (i.e. when the `query` parameter has been specified on the connection) this sorts the
    * results by relevance to the search term(s). When no search query is specified, this sort key is not
    * deterministic and should not be used.
+   *
    */
   Relevance = 'RELEVANCE',
   /** Sort by the `total_price` value. */
   TotalPrice = 'TOTAL_PRICE'
 }
 
-/**
- * Shopify merchants can create pages to hold static HTML content. Each Page object
- * represents a custom page on the online store.
- */
+/** Shopify merchants can create pages to hold static HTML content. Each Page object represents a custom page on the online store. */
 export type Page = HasMetafields & Node & OnlineStorePublishable & {
   __typename?: 'Page';
   /** The description of the page, complete with HTML formatting. */
@@ -4685,10 +4757,7 @@ export type Page = HasMetafields & Node & OnlineStorePublishable & {
    *
    */
   metafields: MetafieldConnection;
-  /**
-   * The URL used for viewing the resource on the shop's Online Store. Returns
-   * `null` if the resource is currently not published to the Online Store sales channel.
-   */
+  /** The URL used for viewing the resource on the shop's Online Store. Returns `null` if the resource is currently not published to the Online Store sales channel. */
   onlineStoreUrl?: Maybe<Scalars['URL']>;
   /** The page's SEO information. */
   seo?: Maybe<Seo>;
@@ -4699,20 +4768,14 @@ export type Page = HasMetafields & Node & OnlineStorePublishable & {
 };
 
 
-/**
- * Shopify merchants can create pages to hold static HTML content. Each Page object
- * represents a custom page on the online store.
- */
+/** Shopify merchants can create pages to hold static HTML content. Each Page object represents a custom page on the online store. */
 export type PageMetafieldArgs = {
   key: Scalars['String'];
   namespace: Scalars['String'];
 };
 
 
-/**
- * Shopify merchants can create pages to hold static HTML content. Each Page object
- * represents a custom page on the online store.
- */
+/** Shopify merchants can create pages to hold static HTML content. Each Page object represents a custom page on the online store. */
 export type PageMetafieldsArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
@@ -4722,7 +4785,10 @@ export type PageMetafieldsArgs = {
   reverse?: InputMaybe<Scalars['Boolean']>;
 };
 
-/** An auto-generated type for paginating through multiple Pages. */
+/**
+ * An auto-generated type for paginating through multiple Pages.
+ *
+ */
 export type PageConnection = {
   __typename?: 'PageConnection';
   /** A list of edges. */
@@ -4731,7 +4797,10 @@ export type PageConnection = {
   pageInfo: PageInfo;
 };
 
-/** An auto-generated type which holds one Page and a cursor during pagination. */
+/**
+ * An auto-generated type which holds one Page and a cursor during pagination.
+ *
+ */
 export type PageEdge = {
   __typename?: 'PageEdge';
   /** A cursor for use in pagination. */
@@ -4743,6 +4812,7 @@ export type PageEdge = {
 /**
  * Returns information about pagination in a connection, in accordance with the
  * [Relay specification](https://relay.dev/graphql/connections.htm#sec-undefined.PageInfo).
+ *
  */
 export type PageInfo = {
   __typename?: 'PageInfo';
@@ -4760,6 +4830,7 @@ export enum PageSortKeys {
    * During a search (i.e. when the `query` parameter has been specified on the connection) this sorts the
    * results by relevance to the search term(s). When no search query is specified, this sort key is not
    * deterministic and should not be used.
+   *
    */
   Relevance = 'RELEVANCE',
   /** Sort by the `title` value. */
@@ -4792,6 +4863,7 @@ export type Payment = Node & {
    * A client-side generated token to identify a payment and perform idempotent operations.
    * For more information, refer to
    * [Idempotent requests](https://shopify.dev/api/usage/idempotent-requests).
+   *
    */
   idempotencyKey?: Maybe<Scalars['String']>;
   /** The URL where the customer needs to be redirected so they can complete the 3D Secure payment flow. */
@@ -4815,10 +4887,7 @@ export type PaymentSettings = {
   countryCode: CountryCode;
   /** The three-letter code for the shop's primary currency. */
   currencyCode: CurrencyCode;
-  /**
-   * A list of enabled currencies (ISO 4217 format) that the shop accepts.
-   * Merchants can enable currencies from their Shopify Payments settings in the Shopify admin.
-   */
+  /** A list of enabled currencies (ISO 4217 format) that the shop accepts. Merchants can enable currencies from their Shopify Payments settings in the Shopify admin. */
   enabledPresentmentCurrencies: Array<CurrencyCode>;
   /** The shop’s Shopify Payments account id. */
   shopifyPaymentsAccountId?: Maybe<Scalars['String']>;
@@ -4860,9 +4929,7 @@ export type PricingValue = MoneyV2 | PricingPercentageValue;
 
 /**
  * A product represents an individual item for sale in a Shopify store. Products are often physical, but they don't have to be.
- * For example, a digital download (such as a movie, music or ebook file) also
- * qualifies as a product, as do services (such as equipment rental, work for hire,
- * customization of another product or an extended warranty).
+ * For example, a digital download (such as a movie, music or ebook file) also qualifies as a product, as do services (such as equipment rental, work for hire, customization of another product or an extended warranty).
  */
 export type Product = HasMetafields & Node & OnlineStorePublishable & {
   __typename?: 'Product';
@@ -4882,11 +4949,13 @@ export type Product = HasMetafields & Node & OnlineStorePublishable & {
    * The featured image for the product.
    *
    * This field is functionally equivalent to `images(first: 1)`.
+   *
    */
   featuredImage?: Maybe<Image>;
   /**
    * A human-friendly unique string for the Product automatically generated from its title.
    * They are used by the Liquid templating language to refer to objects.
+   *
    */
   handle: Scalars['String'];
   /** A globally-unique identifier. */
@@ -4903,10 +4972,7 @@ export type Product = HasMetafields & Node & OnlineStorePublishable & {
    *
    */
   metafields: MetafieldConnection;
-  /**
-   * The URL used for viewing the resource on the shop's Online Store. Returns
-   * `null` if the resource is currently not published to the Online Store sales channel.
-   */
+  /** The URL used for viewing the resource on the shop's Online Store. Returns `null` if the resource is currently not published to the Online Store sales channel. */
   onlineStoreUrl?: Maybe<Scalars['URL']>;
   /** List of product options. */
   options: Array<ProductOption>;
@@ -4918,18 +4984,14 @@ export type Product = HasMetafields & Node & OnlineStorePublishable & {
   publishedAt: Scalars['DateTime'];
   /** Whether the product can only be purchased with a selling plan. */
   requiresSellingPlan: Scalars['Boolean'];
-  /**
-   * A list of a product's available selling plan groups. A selling plan group
-   * represents a selling method. For example, 'Subscribe and save' is a selling
-   * method where customers pay for goods or services per delivery. A selling plan
-   * group contains individual selling plans.
-   */
+  /** A list of a product's available selling plan groups. A selling plan group represents a selling method. For example, 'Subscribe and save' is a selling method where customers pay for goods or services per delivery. A selling plan group contains individual selling plans. */
   sellingPlanGroups: SellingPlanGroupConnection;
   /** The product's SEO information. */
   seo: Seo;
   /**
    * A comma separated list of tags that have been added to the product.
    * Additional access scope required for private apps: unauthenticated_read_product_tags.
+   *
    */
   tags: Array<Scalars['String']>;
   /** The product’s title. */
@@ -4941,12 +5003,14 @@ export type Product = HasMetafields & Node & OnlineStorePublishable & {
    * A product's `updatedAt` value can change for different reasons. For example, if an order
    * is placed for a product that has inventory tracking set up, then the inventory adjustment
    * is counted as an update.
+   *
    */
   updatedAt: Scalars['DateTime'];
   /**
    * Find a product’s variant based on its selected options.
    * This is useful for converting a user’s selection of product options into a single matching variant.
    * If there is not a variant for the selected options, `null` will be returned.
+   *
    */
   variantBySelectedOptions?: Maybe<ProductVariant>;
   /** List of the product’s variants. */
@@ -4958,9 +5022,7 @@ export type Product = HasMetafields & Node & OnlineStorePublishable & {
 
 /**
  * A product represents an individual item for sale in a Shopify store. Products are often physical, but they don't have to be.
- * For example, a digital download (such as a movie, music or ebook file) also
- * qualifies as a product, as do services (such as equipment rental, work for hire,
- * customization of another product or an extended warranty).
+ * For example, a digital download (such as a movie, music or ebook file) also qualifies as a product, as do services (such as equipment rental, work for hire, customization of another product or an extended warranty).
  */
 export type ProductCollectionsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -4973,9 +5035,7 @@ export type ProductCollectionsArgs = {
 
 /**
  * A product represents an individual item for sale in a Shopify store. Products are often physical, but they don't have to be.
- * For example, a digital download (such as a movie, music or ebook file) also
- * qualifies as a product, as do services (such as equipment rental, work for hire,
- * customization of another product or an extended warranty).
+ * For example, a digital download (such as a movie, music or ebook file) also qualifies as a product, as do services (such as equipment rental, work for hire, customization of another product or an extended warranty).
  */
 export type ProductDescriptionArgs = {
   truncateAt?: InputMaybe<Scalars['Int']>;
@@ -4984,9 +5044,7 @@ export type ProductDescriptionArgs = {
 
 /**
  * A product represents an individual item for sale in a Shopify store. Products are often physical, but they don't have to be.
- * For example, a digital download (such as a movie, music or ebook file) also
- * qualifies as a product, as do services (such as equipment rental, work for hire,
- * customization of another product or an extended warranty).
+ * For example, a digital download (such as a movie, music or ebook file) also qualifies as a product, as do services (such as equipment rental, work for hire, customization of another product or an extended warranty).
  */
 export type ProductImagesArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -5000,9 +5058,7 @@ export type ProductImagesArgs = {
 
 /**
  * A product represents an individual item for sale in a Shopify store. Products are often physical, but they don't have to be.
- * For example, a digital download (such as a movie, music or ebook file) also
- * qualifies as a product, as do services (such as equipment rental, work for hire,
- * customization of another product or an extended warranty).
+ * For example, a digital download (such as a movie, music or ebook file) also qualifies as a product, as do services (such as equipment rental, work for hire, customization of another product or an extended warranty).
  */
 export type ProductMediaArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -5016,9 +5072,7 @@ export type ProductMediaArgs = {
 
 /**
  * A product represents an individual item for sale in a Shopify store. Products are often physical, but they don't have to be.
- * For example, a digital download (such as a movie, music or ebook file) also
- * qualifies as a product, as do services (such as equipment rental, work for hire,
- * customization of another product or an extended warranty).
+ * For example, a digital download (such as a movie, music or ebook file) also qualifies as a product, as do services (such as equipment rental, work for hire, customization of another product or an extended warranty).
  */
 export type ProductMetafieldArgs = {
   key: Scalars['String'];
@@ -5028,9 +5082,7 @@ export type ProductMetafieldArgs = {
 
 /**
  * A product represents an individual item for sale in a Shopify store. Products are often physical, but they don't have to be.
- * For example, a digital download (such as a movie, music or ebook file) also
- * qualifies as a product, as do services (such as equipment rental, work for hire,
- * customization of another product or an extended warranty).
+ * For example, a digital download (such as a movie, music or ebook file) also qualifies as a product, as do services (such as equipment rental, work for hire, customization of another product or an extended warranty).
  */
 export type ProductMetafieldsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -5044,9 +5096,7 @@ export type ProductMetafieldsArgs = {
 
 /**
  * A product represents an individual item for sale in a Shopify store. Products are often physical, but they don't have to be.
- * For example, a digital download (such as a movie, music or ebook file) also
- * qualifies as a product, as do services (such as equipment rental, work for hire,
- * customization of another product or an extended warranty).
+ * For example, a digital download (such as a movie, music or ebook file) also qualifies as a product, as do services (such as equipment rental, work for hire, customization of another product or an extended warranty).
  */
 export type ProductOptionsArgs = {
   first?: InputMaybe<Scalars['Int']>;
@@ -5055,9 +5105,7 @@ export type ProductOptionsArgs = {
 
 /**
  * A product represents an individual item for sale in a Shopify store. Products are often physical, but they don't have to be.
- * For example, a digital download (such as a movie, music or ebook file) also
- * qualifies as a product, as do services (such as equipment rental, work for hire,
- * customization of another product or an extended warranty).
+ * For example, a digital download (such as a movie, music or ebook file) also qualifies as a product, as do services (such as equipment rental, work for hire, customization of another product or an extended warranty).
  */
 export type ProductSellingPlanGroupsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -5070,9 +5118,7 @@ export type ProductSellingPlanGroupsArgs = {
 
 /**
  * A product represents an individual item for sale in a Shopify store. Products are often physical, but they don't have to be.
- * For example, a digital download (such as a movie, music or ebook file) also
- * qualifies as a product, as do services (such as equipment rental, work for hire,
- * customization of another product or an extended warranty).
+ * For example, a digital download (such as a movie, music or ebook file) also qualifies as a product, as do services (such as equipment rental, work for hire, customization of another product or an extended warranty).
  */
 export type ProductVariantBySelectedOptionsArgs = {
   selectedOptions: Array<SelectedOptionInput>;
@@ -5081,9 +5127,7 @@ export type ProductVariantBySelectedOptionsArgs = {
 
 /**
  * A product represents an individual item for sale in a Shopify store. Products are often physical, but they don't have to be.
- * For example, a digital download (such as a movie, music or ebook file) also
- * qualifies as a product, as do services (such as equipment rental, work for hire,
- * customization of another product or an extended warranty).
+ * For example, a digital download (such as a movie, music or ebook file) also qualifies as a product, as do services (such as equipment rental, work for hire, customization of another product or an extended warranty).
  */
 export type ProductVariantsArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -5112,13 +5156,17 @@ export enum ProductCollectionSortKeys {
    * During a search (i.e. when the `query` parameter has been specified on the connection) this sorts the
    * results by relevance to the search term(s). When no search query is specified, this sort key is not
    * deterministic and should not be used.
+   *
    */
   Relevance = 'RELEVANCE',
   /** Sort by the `title` value. */
   Title = 'TITLE'
 }
 
-/** An auto-generated type for paginating through multiple Products. */
+/**
+ * An auto-generated type for paginating through multiple Products.
+ *
+ */
 export type ProductConnection = {
   __typename?: 'ProductConnection';
   /** A list of edges. */
@@ -5129,7 +5177,10 @@ export type ProductConnection = {
   pageInfo: PageInfo;
 };
 
-/** An auto-generated type which holds one Product and a cursor during pagination. */
+/**
+ * An auto-generated type which holds one Product and a cursor during pagination.
+ *
+ */
 export type ProductEdge = {
   __typename?: 'ProductEdge';
   /** A cursor for use in pagination. */
@@ -5168,6 +5219,7 @@ export enum ProductImageSortKeys {
    * During a search (i.e. when the `query` parameter has been specified on the connection) this sorts the
    * results by relevance to the search term(s). When no search query is specified, this sort key is not
    * deterministic and should not be used.
+   *
    */
   Relevance = 'RELEVANCE'
 }
@@ -5182,6 +5234,7 @@ export enum ProductMediaSortKeys {
    * During a search (i.e. when the `query` parameter has been specified on the connection) this sorts the
    * results by relevance to the search term(s). When no search query is specified, this sort key is not
    * deterministic and should not be used.
+   *
    */
   Relevance = 'RELEVANCE'
 }
@@ -5190,6 +5243,7 @@ export enum ProductMediaSortKeys {
  * Product property names like "Size", "Color", and "Material" that the customers can select.
  * Variants are selected based on permutations of these options.
  * 255 characters limit each.
+ *
  */
 export type ProductOption = Node & {
   __typename?: 'ProductOption';
@@ -5226,6 +5280,7 @@ export enum ProductSortKeys {
    * During a search (i.e. when the `query` parameter has been specified on the connection) this sorts the
    * results by relevance to the search term(s). When no search query is specified, this sort key is not
    * deterministic and should not be used.
+   *
    */
   Relevance = 'RELEVANCE',
   /** Sort by the `title` value. */
@@ -5244,21 +5299,20 @@ export type ProductVariant = HasMetafields & Node & {
   /** The barcode (for example, ISBN, UPC, or GTIN) associated with the variant. */
   barcode?: Maybe<Scalars['String']>;
   /**
-   * The compare at price of the variant. This can be used to mark a variant as on
-   * sale, when `compareAtPrice` is higher than `price`.
+   * The compare at price of the variant. This can be used to mark a variant as on sale, when `compareAtPrice` is higher than `price`.
    * @deprecated Use `compareAtPriceV2` instead
    */
   compareAtPrice?: Maybe<Scalars['Money']>;
-  /**
-   * The compare at price of the variant. This can be used to mark a variant as on
-   * sale, when `compareAtPriceV2` is higher than `priceV2`.
-   */
+  /** The compare at price of the variant. This can be used to mark a variant as on sale, when `compareAtPriceV2` is higher than `priceV2`. */
   compareAtPriceV2?: Maybe<MoneyV2>;
   /** Whether a product is out of stock but still available for purchase (used for backorders). */
   currentlyNotInStock: Scalars['Boolean'];
   /** A globally-unique identifier. */
   id: Scalars['ID'];
-  /** Image associated with the product variant. This field falls back to the product image if no image is available. */
+  /**
+   * Image associated with the product variant. This field falls back to the product image if no image is available.
+   *
+   */
   image?: Maybe<Image>;
   /** Returns a metafield found by namespace and key. */
   metafield?: Maybe<Metafield>;
@@ -5283,11 +5337,7 @@ export type ProductVariant = HasMetafields & Node & {
   requiresShipping: Scalars['Boolean'];
   /** List of product options applied to the variant. */
   selectedOptions: Array<SelectedOption>;
-  /**
-   * Represents an association between a variant and a selling plan. Selling plan
-   * allocations describe which selling plans are available for each variant, and
-   * what their impact is on pricing.
-   */
+  /** Represents an association between a variant and a selling plan. Selling plan allocations describe which selling plans are available for each variant, and what their impact is on pricing. */
   sellingPlanAllocations: SellingPlanAllocationConnection;
   /** The SKU (stock keeping unit) associated with the variant. */
   sku?: Maybe<Scalars['String']>;
@@ -5343,7 +5393,10 @@ export type ProductVariantStoreAvailabilityArgs = {
   reverse?: InputMaybe<Scalars['Boolean']>;
 };
 
-/** An auto-generated type for paginating through multiple ProductVariants. */
+/**
+ * An auto-generated type for paginating through multiple ProductVariants.
+ *
+ */
 export type ProductVariantConnection = {
   __typename?: 'ProductVariantConnection';
   /** A list of edges. */
@@ -5352,7 +5405,10 @@ export type ProductVariantConnection = {
   pageInfo: PageInfo;
 };
 
-/** An auto-generated type which holds one ProductVariant and a cursor during pagination. */
+/**
+ * An auto-generated type which holds one ProductVariant and a cursor during pagination.
+ *
+ */
 export type ProductVariantEdge = {
   __typename?: 'ProductVariantEdge';
   /** A cursor for use in pagination. */
@@ -5371,6 +5427,7 @@ export enum ProductVariantSortKeys {
    * During a search (i.e. when the `query` parameter has been specified on the connection) this sorts the
    * results by relevance to the search term(s). When no search query is specified, this sort key is not
    * deterministic and should not be used.
+   *
    */
   Relevance = 'RELEVANCE',
   /** Sort by the `sku` value. */
@@ -5412,6 +5469,7 @@ export type QueryRoot = {
    * List of the shop's locations that support in-store pickup.
    *
    * When sorting by distance, you must specify a location via the `near` argument.
+   *
    */
   locations: LocationConnection;
   /** Returns a specific node by ID. */
@@ -5438,11 +5496,13 @@ export type QueryRoot = {
    * Find recommended products related to a given `product_id`.
    * To learn more about how recommendations are generated, see
    * [*Showing product recommendations on product pages*](https://help.shopify.com/themes/development/recommended-products).
+   *
    */
   productRecommendations?: Maybe<Array<Product>>;
   /**
    * Tags added to products.
    * Additional access scope required: unauthenticated_read_product_tags.
+   *
    */
   productTags: StringConnection;
   /** List of product types for the shop's products that are published to your app. */
@@ -5633,6 +5693,7 @@ export type Seo = {
 /**
  * Script discount applications capture the intentions of a discount that
  * was created by a Shopify Script.
+ *
  */
 export type ScriptDiscountApplication = DiscountApplication & {
   __typename?: 'ScriptDiscountApplication';
@@ -5651,6 +5712,7 @@ export type ScriptDiscountApplication = DiscountApplication & {
 /**
  * Properties used by customers to select a product variant.
  * Products can have multiple options, like different sizes or colors.
+ *
  */
 export type SelectedOption = {
   __typename?: 'SelectedOption';
@@ -5677,11 +5739,7 @@ export type SellingPlan = {
   id: Scalars['ID'];
   /** The name of the selling plan. For example, '6 weeks of prepaid granola, delivered weekly'. */
   name: Scalars['String'];
-  /**
-   * Represents the selling plan options available in the drop-down list in the
-   * storefront. For example, 'Delivery every week' or 'Delivery every 2 weeks'
-   * specifies the delivery frequency options for the product.
-   */
+  /** Represents the selling plan options available in the drop-down list in the storefront. For example, 'Delivery every week' or 'Delivery every 2 weeks' specifies the delivery frequency options for the product. */
   options: Array<SellingPlanOption>;
   /** Represents how a selling plan affects pricing when a variant is purchased with a selling plan. */
   priceAdjustments: Array<SellingPlanPriceAdjustment>;
@@ -5689,28 +5747,19 @@ export type SellingPlan = {
   recurringDeliveries: Scalars['Boolean'];
 };
 
-/**
- * Represents an association between a variant and a selling plan. Selling plan
- * allocations describe the options offered for each variant, and the price of the
- * variant when purchased with a selling plan.
- */
+/** Represents an association between a variant and a selling plan. Selling plan allocations describe the options offered for each variant, and the price of the variant when purchased with a selling plan. */
 export type SellingPlanAllocation = {
   __typename?: 'SellingPlanAllocation';
-  /**
-   * A list of price adjustments, with a maximum of two. When there are two, the
-   * first price adjustment goes into effect at the time of purchase, while the
-   * second one starts after a certain number of orders.
-   */
+  /** A list of price adjustments, with a maximum of two. When there are two, the first price adjustment goes into effect at the time of purchase, while the second one starts after a certain number of orders. */
   priceAdjustments: Array<SellingPlanAllocationPriceAdjustment>;
-  /**
-   * A representation of how products and variants can be sold and purchased. For
-   * example, an individual selling plan could be '6 weeks of prepaid granola,
-   * delivered weekly'.
-   */
+  /** A representation of how products and variants can be sold and purchased. For example, an individual selling plan could be '6 weeks of prepaid granola, delivered weekly'. */
   sellingPlan: SellingPlan;
 };
 
-/** An auto-generated type for paginating through multiple SellingPlanAllocations. */
+/**
+ * An auto-generated type for paginating through multiple SellingPlanAllocations.
+ *
+ */
 export type SellingPlanAllocationConnection = {
   __typename?: 'SellingPlanAllocationConnection';
   /** A list of edges. */
@@ -5719,7 +5768,10 @@ export type SellingPlanAllocationConnection = {
   pageInfo: PageInfo;
 };
 
-/** An auto-generated type which holds one SellingPlanAllocation and a cursor during pagination. */
+/**
+ * An auto-generated type which holds one SellingPlanAllocation and a cursor during pagination.
+ *
+ */
 export type SellingPlanAllocationEdge = {
   __typename?: 'SellingPlanAllocationEdge';
   /** A cursor for use in pagination. */
@@ -5731,32 +5783,20 @@ export type SellingPlanAllocationEdge = {
 /** The resulting prices for variants when they're purchased with a specific selling plan. */
 export type SellingPlanAllocationPriceAdjustment = {
   __typename?: 'SellingPlanAllocationPriceAdjustment';
-  /**
-   * The price of the variant when it's purchased without a selling plan for the
-   * same number of deliveries. For example, if a customer purchases 6 deliveries
-   * of $10.00 granola separately, then the price is 6 x $10.00 = $60.00.
-   */
+  /** The price of the variant when it's purchased without a selling plan for the same number of deliveries. For example, if a customer purchases 6 deliveries of $10.00 granola separately, then the price is 6 x $10.00 = $60.00. */
   compareAtPrice: MoneyV2;
-  /**
-   * The effective price for a single delivery. For example, for a prepaid
-   * subscription plan that includes 6 deliveries at the price of $48.00, the per
-   * delivery price is $8.00.
-   */
+  /** The effective price for a single delivery. For example, for a prepaid subscription plan that includes 6 deliveries at the price of $48.00, the per delivery price is $8.00. */
   perDeliveryPrice: MoneyV2;
-  /**
-   * The price of the variant when it's purchased with a selling plan For example,
-   * for a prepaid subscription plan that includes 6 deliveries of $10.00 granola,
-   * where the customer gets 20% off, the price is 6 x $10.00 x 0.80 = $48.00.
-   */
+  /** The price of the variant when it's purchased with a selling plan For example, for a prepaid subscription plan that includes 6 deliveries of $10.00 granola, where the customer gets 20% off, the price is 6 x $10.00 x 0.80 = $48.00. */
   price: MoneyV2;
-  /**
-   * The resulting price per unit for the variant associated with the selling plan.
-   * If the variant isn't sold by quantity or measurement, then this field returns `null`.
-   */
+  /** The resulting price per unit for the variant associated with the selling plan. If the variant isn't sold by quantity or measurement, then this field returns `null`. */
   unitPrice?: Maybe<MoneyV2>;
 };
 
-/** An auto-generated type for paginating through multiple SellingPlans. */
+/**
+ * An auto-generated type for paginating through multiple SellingPlans.
+ *
+ */
 export type SellingPlanConnection = {
   __typename?: 'SellingPlanConnection';
   /** A list of edges. */
@@ -5765,7 +5805,10 @@ export type SellingPlanConnection = {
   pageInfo: PageInfo;
 };
 
-/** An auto-generated type which holds one SellingPlan and a cursor during pagination. */
+/**
+ * An auto-generated type which holds one SellingPlan and a cursor during pagination.
+ *
+ */
 export type SellingPlanEdge = {
   __typename?: 'SellingPlanEdge';
   /** A cursor for use in pagination. */
@@ -5788,38 +5831,21 @@ export type SellingPlanFixedPriceAdjustment = {
   price: MoneyV2;
 };
 
-/**
- * Represents a selling method. For example, 'Subscribe and save' is a selling
- * method where customers pay for goods or services per delivery. A selling plan
- * group contains individual selling plans.
- */
+/** Represents a selling method. For example, 'Subscribe and save' is a selling method where customers pay for goods or services per delivery. A selling plan group contains individual selling plans. */
 export type SellingPlanGroup = {
   __typename?: 'SellingPlanGroup';
   /** A display friendly name for the app that created the selling plan group. */
   appName?: Maybe<Scalars['String']>;
   /** The name of the selling plan group. */
   name: Scalars['String'];
-  /**
-   * Represents the selling plan options available in the drop-down list in the
-   * storefront. For example, 'Delivery every week' or 'Delivery every 2 weeks'
-   * specifies the delivery frequency options for the product.
-   */
+  /** Represents the selling plan options available in the drop-down list in the storefront. For example, 'Delivery every week' or 'Delivery every 2 weeks' specifies the delivery frequency options for the product. */
   options: Array<SellingPlanGroupOption>;
-  /**
-   * A list of selling plans in a selling plan group. A selling plan is a
-   * representation of how products and variants can be sold and purchased. For
-   * example, an individual selling plan could be '6 weeks of prepaid granola,
-   * delivered weekly'.
-   */
+  /** A list of selling plans in a selling plan group. A selling plan is a representation of how products and variants can be sold and purchased. For example, an individual selling plan could be '6 weeks of prepaid granola, delivered weekly'. */
   sellingPlans: SellingPlanConnection;
 };
 
 
-/**
- * Represents a selling method. For example, 'Subscribe and save' is a selling
- * method where customers pay for goods or services per delivery. A selling plan
- * group contains individual selling plans.
- */
+/** Represents a selling method. For example, 'Subscribe and save' is a selling method where customers pay for goods or services per delivery. A selling plan group contains individual selling plans. */
 export type SellingPlanGroupSellingPlansArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
@@ -5828,7 +5854,10 @@ export type SellingPlanGroupSellingPlansArgs = {
   reverse?: InputMaybe<Scalars['Boolean']>;
 };
 
-/** An auto-generated type for paginating through multiple SellingPlanGroups. */
+/**
+ * An auto-generated type for paginating through multiple SellingPlanGroups.
+ *
+ */
 export type SellingPlanGroupConnection = {
   __typename?: 'SellingPlanGroupConnection';
   /** A list of edges. */
@@ -5837,7 +5866,10 @@ export type SellingPlanGroupConnection = {
   pageInfo: PageInfo;
 };
 
-/** An auto-generated type which holds one SellingPlanGroup and a cursor during pagination. */
+/**
+ * An auto-generated type which holds one SellingPlanGroup and a cursor during pagination.
+ *
+ */
 export type SellingPlanGroupEdge = {
   __typename?: 'SellingPlanGroupEdge';
   /** A cursor for use in pagination. */
@@ -5851,10 +5883,7 @@ export type SellingPlanGroupOption = {
   __typename?: 'SellingPlanGroupOption';
   /** The name of the option. For example, 'Delivery every'. */
   name: Scalars['String'];
-  /**
-   * The values for the options specified by the selling plans in the selling plan
-   * group. For example, '1 week', '2 weeks', '3 weeks'.
-   */
+  /** The values for the options specified by the selling plans in the selling plan group. For example, '1 week', '2 weeks', '3 weeks'. */
   values: Array<Scalars['String']>;
 };
 
@@ -5874,25 +5903,16 @@ export type SellingPlanPercentagePriceAdjustment = {
   adjustmentPercentage: Scalars['Int'];
 };
 
-/**
- * Represents by how much the price of a variant associated with a selling plan is
- * adjusted. Each variant can have up to two price adjustments.
- */
+/** Represents by how much the price of a variant associated with a selling plan is adjusted. Each variant can have up to two price adjustments. */
 export type SellingPlanPriceAdjustment = {
   __typename?: 'SellingPlanPriceAdjustment';
   /** The type of price adjustment. An adjustment value can have one of three types: percentage, amount off, or a new price. */
   adjustmentValue: SellingPlanPriceAdjustmentValue;
-  /**
-   * The number of orders that the price adjustment applies to If the price
-   * adjustment always applies, then this field is `null`.
-   */
+  /** The number of orders that the price adjustment applies to If the price adjustment always applies, then this field is `null`. */
   orderCount?: Maybe<Scalars['Int']>;
 };
 
-/**
- * Represents by how much the price of a variant associated with a selling plan is
- * adjusted. Each variant can have up to two price adjustments.
- */
+/** Represents by how much the price of a variant associated with a selling plan is adjusted. Each variant can have up to two price adjustments. */
 export type SellingPlanPriceAdjustmentValue = SellingPlanFixedAmountPriceAdjustment | SellingPlanFixedPriceAdjustment | SellingPlanPercentagePriceAdjustment;
 
 /** A shipping rate to be applied to a checkout. */
@@ -5983,6 +6003,7 @@ export type ShopPolicy = Node & {
  * A policy for the store that comes with a default value, such as a subscription policy.
  * If the merchant hasn't configured a policy for their store, then the policy will return the default value.
  * Otherwise, the policy will return the merchant-configured value.
+ *
  */
 export type ShopPolicyWithDefault = {
   __typename?: 'ShopPolicyWithDefault';
@@ -6001,6 +6022,7 @@ export type ShopPolicyWithDefault = {
 /**
  * The availability of a product variant at a particular location.
  * Local pick-up must be enabled in the  store's shipping settings, otherwise this will return an empty result.
+ *
  */
 export type StoreAvailability = {
   __typename?: 'StoreAvailability';
@@ -6012,7 +6034,10 @@ export type StoreAvailability = {
   pickUpTime: Scalars['String'];
 };
 
-/** An auto-generated type for paginating through multiple StoreAvailabilities. */
+/**
+ * An auto-generated type for paginating through multiple StoreAvailabilities.
+ *
+ */
 export type StoreAvailabilityConnection = {
   __typename?: 'StoreAvailabilityConnection';
   /** A list of edges. */
@@ -6021,7 +6046,10 @@ export type StoreAvailabilityConnection = {
   pageInfo: PageInfo;
 };
 
-/** An auto-generated type which holds one StoreAvailability and a cursor during pagination. */
+/**
+ * An auto-generated type which holds one StoreAvailability and a cursor during pagination.
+ *
+ */
 export type StoreAvailabilityEdge = {
   __typename?: 'StoreAvailabilityEdge';
   /** A cursor for use in pagination. */
@@ -6030,7 +6058,10 @@ export type StoreAvailabilityEdge = {
   node: StoreAvailability;
 };
 
-/** An auto-generated type for paginating through a list of Strings. */
+/**
+ * An auto-generated type for paginating through a list of Strings.
+ *
+ */
 export type StringConnection = {
   __typename?: 'StringConnection';
   /** A list of edges. */
@@ -6039,7 +6070,10 @@ export type StringConnection = {
   pageInfo: PageInfo;
 };
 
-/** An auto-generated type which holds one String and a cursor during pagination. */
+/**
+ * An auto-generated type which holds one String and a cursor during pagination.
+ *
+ */
 export type StringEdge = {
   __typename?: 'StringEdge';
   /** A cursor for use in pagination. */
@@ -6051,18 +6085,14 @@ export type StringEdge = {
 /**
  * Specifies the fields required to complete a checkout with
  * a tokenized payment.
+ *
  */
 export type TokenizedPaymentInput = {
   /** The amount of the payment. */
   amount: Scalars['Money'];
   /** The billing address for the payment. */
   billingAddress: MailingAddressInput;
-  /**
-   * A unique client generated key used to avoid duplicate charges. When a
-   * duplicate payment is found, the original is returned instead of creating a new
-   * one. For more information, refer to [Idempotent
-   * requests](https://shopify.dev/api/usage/idempotent-requests).
-   */
+  /** A unique client generated key used to avoid duplicate charges. When a duplicate payment is found, the original is returned instead of creating a new one. For more information, refer to [Idempotent requests](https://shopify.dev/api/usage/idempotent-requests). */
   idempotencyKey: Scalars['String'];
   /** Public Hash Key used for AndroidPay payments only. */
   identifier?: InputMaybe<Scalars['String']>;
@@ -6077,16 +6107,12 @@ export type TokenizedPaymentInput = {
 /**
  * Specifies the fields required to complete a checkout with
  * a tokenized payment.
+ *
  */
 export type TokenizedPaymentInputV2 = {
   /** The billing address for the payment. */
   billingAddress: MailingAddressInput;
-  /**
-   * A unique client generated key used to avoid duplicate charges. When a
-   * duplicate payment is found, the original is returned instead of creating a new
-   * one. For more information, refer to [Idempotent
-   * requests](https://shopify.dev/api/usage/idempotent-requests).
-   */
+  /** A unique client generated key used to avoid duplicate charges. When a duplicate payment is found, the original is returned instead of creating a new one. For more information, refer to [Idempotent requests](https://shopify.dev/api/usage/idempotent-requests). */
   idempotencyKey: Scalars['String'];
   /** Public Hash Key used for AndroidPay payments only. */
   identifier?: InputMaybe<Scalars['String']>;
@@ -6094,10 +6120,7 @@ export type TokenizedPaymentInputV2 = {
   paymentAmount: MoneyInput;
   /** A simple string or JSON containing the required payment data for the tokenized payment. */
   paymentData: Scalars['String'];
-  /**
-   * Whether to execute the payment in test mode, if possible. Test mode is not
-   * supported in production stores. Defaults to `false`.
-   */
+  /** Whether to execute the payment in test mode, if possible. Test mode is not supported in production stores. Defaults to `false`. */
   test?: InputMaybe<Scalars['Boolean']>;
   /** The type of payment token. */
   type: Scalars['String'];
@@ -6106,16 +6129,12 @@ export type TokenizedPaymentInputV2 = {
 /**
  * Specifies the fields required to complete a checkout with
  * a tokenized payment.
+ *
  */
 export type TokenizedPaymentInputV3 = {
   /** The billing address for the payment. */
   billingAddress: MailingAddressInput;
-  /**
-   * A unique client generated key used to avoid duplicate charges. When a
-   * duplicate payment is found, the original is returned instead of creating a new
-   * one. For more information, refer to [Idempotent
-   * requests](https://shopify.dev/api/usage/idempotent-requests).
-   */
+  /** A unique client generated key used to avoid duplicate charges. When a duplicate payment is found, the original is returned instead of creating a new one. For more information, refer to [Idempotent requests](https://shopify.dev/api/usage/idempotent-requests). */
   idempotencyKey: Scalars['String'];
   /** Public Hash Key used for AndroidPay payments only. */
   identifier?: InputMaybe<Scalars['String']>;
@@ -6123,10 +6142,7 @@ export type TokenizedPaymentInputV3 = {
   paymentAmount: MoneyInput;
   /** A simple string or JSON containing the required payment data for the tokenized payment. */
   paymentData: Scalars['String'];
-  /**
-   * Whether to execute the payment in test mode, if possible. Test mode is not
-   * supported in production stores. Defaults to `false`.
-   */
+  /** Whether to execute the payment in test mode, if possible. Test mode is not supported in production stores. Defaults to `false`. */
   test?: InputMaybe<Scalars['Boolean']>;
   /** The type of payment token. */
   type: PaymentTokenType;
@@ -6160,6 +6176,7 @@ export enum TransactionKind {
   /**
    * An amount reserved against the cardholder's funding source.
    * Money does not change hands until the authorization is captured.
+   *
    */
   Authorization = 'AUTHORIZATION',
   /** A transfer of the money that was reserved during the authorization stage. */
@@ -6184,7 +6201,10 @@ export enum TransactionStatus {
   Success = 'SUCCESS'
 }
 
-/** The measurement used to calculate a unit price for a product variant (e.g. $9.99 / 100ml). */
+/**
+ * The measurement used to calculate a unit price for a product variant (e.g. $9.99 / 100ml).
+ *
+ */
 export type UnitPriceMeasurement = {
   __typename?: 'UnitPriceMeasurement';
   /** The type of unit of measurement for the unit price measurement. */
@@ -6309,12 +6329,7 @@ export type FindProductsQueryVariables = Exact<{
 }>;
 
 
-export type FindProductsQuery = { __typename?: 'QueryRoot', products: { __typename?: 'ProductConnection', edges: Array<{ __typename?: 'ProductEdge', node: { __typename?: 'Product', title: string, id: string, description: string, media: { __typename?: 'MediaConnection', edges: Array<{ __typename?: 'MediaEdge', node: { __typename?: 'ExternalVideo', previewImage?: { __typename?: 'Image', src: any } | null } | { __typename?: 'MediaImage', previewImage?: { __typename?: 'Image', src: any } | null } | { __typename?: 'Model3d', previewImage?: { __typename?: 'Image', src: any } | null } | { __typename?: 'Video', previewImage?: { __typename?: 'Image', src: any } | null } }> } } }> } };
-
-export type FindShopQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type FindShopQuery = { __typename?: 'QueryRoot', shop: { __typename?: 'Shop', name: string } };
+export type FindProductsQuery = { __typename?: 'QueryRoot', products: { __typename?: 'ProductConnection', edges: Array<{ __typename?: 'ProductEdge', node: { __typename?: 'Product', title: string, id: string, priceRange: { __typename?: 'ProductPriceRange', maxVariantPrice: { __typename?: 'MoneyV2', amount: any } }, featuredImage?: { __typename?: 'Image', url: any } | null } }> } };
 
 
 export const FindProductsDocument = gql`
@@ -6324,25 +6339,16 @@ export const FindProductsDocument = gql`
       node {
         title
         id
-        description
-        media(first: $first) {
-          edges {
-            node {
-              previewImage {
-                src
-              }
-            }
+        priceRange {
+          maxVariantPrice {
+            amount
           }
+        }
+        featuredImage {
+          url
         }
       }
     }
-  }
-}
-    `;
-export const FindShopDocument = gql`
-    query FindShop {
-  shop {
-    name
   }
 }
     `;
@@ -6356,9 +6362,6 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
   return {
     FindProducts(variables?: FindProductsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<FindProductsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<FindProductsQuery>(FindProductsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'FindProducts');
-    },
-    FindShop(variables?: FindShopQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<FindShopQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<FindShopQuery>(FindShopDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'FindShop');
     }
   };
 }

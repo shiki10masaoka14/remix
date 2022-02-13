@@ -5,11 +5,10 @@
   "license": "",
   "scripts": {
     "dev": "node -r dotenv/config node_modules/.bin/remix dev",
-    "dev1": "remix dev",
     "build": "remix build",
     "postinstall": "remix setup node",
     "start": "remix-serve build",
-    "generate": "graphql-codegen"
+    "generate": "graphql-codegen --require dotenv/config --config codegen.yml"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.8.3",

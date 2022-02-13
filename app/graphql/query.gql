@@ -4,23 +4,15 @@ query FindProducts($first: Int) {
       node {
         title
         id
-        description
-        media(first: $first) {
-          edges {
-            node {
-              previewImage {
-                src
-              }
-            }
+        priceRange {
+          maxVariantPrice {
+            amount
           }
+        }
+        featuredImage {
+          url
         }
       }
     }
-  }
-}
-
-query FindShop {
-  shop {
-    name
   }
 }
