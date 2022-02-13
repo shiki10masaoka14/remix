@@ -1,4 +1,4 @@
-query FindProducts($first: Int) {
+query GetProducts($first: Int) {
   products(first: $first) {
     edges {
       node {
@@ -11,6 +11,32 @@ query FindProducts($first: Int) {
         }
         featuredImage {
           url
+        }
+      }
+    }
+  }
+}
+
+query FindProduct($id: ID, $first: Int) {
+  product(id: $id) {
+    id
+    title
+    featuredImage {
+      url
+    }
+    description
+    priceRange {
+      maxVariantPrice {
+        amount
+      }
+    }
+    variants(first: $first) {
+      edges {
+        node {
+          selectedOptions {
+            name
+            value
+          }
         }
       }
     }

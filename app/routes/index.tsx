@@ -13,21 +13,33 @@ import { LoaderFunction, useLoaderData } from "remix";
 import { Link as RemixLink } from "remix";
 import { Layout } from "~/components/Layout";
 import {
-  FindProductsQuery,
+  GetProductsQuery,
   getSdk,
 } from "~/utils/generated";
 import { graphQLClient } from "~/utils/shopifyClient";
 
+// ここまで
+//
+//
+//
+// ここから
+
 export const loader: LoaderFunction = async () => {
   const sdk = getSdk(graphQLClient);
-  const { products } = await sdk.FindProducts({
+  const { products } = await sdk.GetProducts({
     first: 10,
   });
   return { products };
 };
 
+// ここまで
+//
+//
+//
+// ここから
+
 const Index: VFC = () => {
-  const products = useLoaderData<FindProductsQuery>();
+  const products = useLoaderData<GetProductsQuery>();
   return (
     <Layout>
       <SimpleGrid

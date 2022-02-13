@@ -6324,16 +6324,24 @@ export enum WeightUnit {
   Pounds = 'POUNDS'
 }
 
-export type FindProductsQueryVariables = Exact<{
+export type GetProductsQueryVariables = Exact<{
   first?: InputMaybe<Scalars['Int']>;
 }>;
 
 
-export type FindProductsQuery = { __typename?: 'QueryRoot', products: { __typename?: 'ProductConnection', edges: Array<{ __typename?: 'ProductEdge', node: { __typename?: 'Product', title: string, id: string, priceRange: { __typename?: 'ProductPriceRange', maxVariantPrice: { __typename?: 'MoneyV2', amount: any } }, featuredImage?: { __typename?: 'Image', url: any } | null } }> } };
+export type GetProductsQuery = { __typename?: 'QueryRoot', products: { __typename?: 'ProductConnection', edges: Array<{ __typename?: 'ProductEdge', node: { __typename?: 'Product', title: string, id: string, priceRange: { __typename?: 'ProductPriceRange', maxVariantPrice: { __typename?: 'MoneyV2', amount: any } }, featuredImage?: { __typename?: 'Image', url: any } | null } }> } };
+
+export type FindProductQueryVariables = Exact<{
+  id?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+}>;
 
 
-export const FindProductsDocument = gql`
-    query FindProducts($first: Int) {
+export type FindProductQuery = { __typename?: 'QueryRoot', product?: { __typename?: 'Product', id: string, title: string, description: string, featuredImage?: { __typename?: 'Image', url: any } | null, priceRange: { __typename?: 'ProductPriceRange', maxVariantPrice: { __typename?: 'MoneyV2', amount: any } }, variants: { __typename?: 'ProductVariantConnection', edges: Array<{ __typename?: 'ProductVariantEdge', node: { __typename?: 'ProductVariant', selectedOptions: Array<{ __typename?: 'SelectedOption', name: string, value: string }> } }> } } | null };
+
+
+export const GetProductsDocument = gql`
+    query GetProducts($first: Int) {
   products(first: $first) {
     edges {
       node {
@@ -6352,6 +6360,33 @@ export const FindProductsDocument = gql`
   }
 }
     `;
+export const FindProductDocument = gql`
+    query FindProduct($id: ID, $first: Int) {
+  product(id: $id) {
+    id
+    title
+    featuredImage {
+      url
+    }
+    description
+    priceRange {
+      maxVariantPrice {
+        amount
+      }
+    }
+    variants(first: $first) {
+      edges {
+        node {
+          selectedOptions {
+            name
+            value
+          }
+        }
+      }
+    }
+  }
+}
+    `;
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string) => Promise<T>;
 
@@ -6360,8 +6395,11 @@ const defaultWrapper: SdkFunctionWrapper = (action, _operationName) => action();
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
-    FindProducts(variables?: FindProductsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<FindProductsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<FindProductsQuery>(FindProductsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'FindProducts');
+    GetProducts(variables?: GetProductsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetProductsQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetProductsQuery>(GetProductsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'GetProducts');
+    },
+    FindProduct(variables?: FindProductQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<FindProductQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<FindProductQuery>(FindProductDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'FindProduct');
     }
   };
 }
