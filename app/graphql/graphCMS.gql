@@ -1,0 +1,6 @@
+query GetInfos {
+  infos {
+    title
+    value
+  }
+}

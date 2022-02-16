@@ -1,8 +1,7 @@
 {
   "version": "0.2",
   "ignorePaths": [
-    "app/utils/generated.ts",
-    "app/graphql/schema.graphql"
+    "app/utils/graphCMSClient.ts"
   ],
   "dictionaryDefinitions": [],
   "dictionaries": [],
@@ -22,6 +21,7 @@
     "esbenp",
     "esbuild",
     "faunadb",
+    "GRAPHCMS",
     "hoge",
     "jsxdev",
     "kohler",

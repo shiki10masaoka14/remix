@@ -1,0 +1,8 @@
+schema: https://api-ap-northeast-1.graphcms.com/v2/ckzoznox3355201yygydq9zlj/master
+documents: app/graphql/graphCMS.gql
+generates:
+  app/utils/graphCMSGenerated.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-graphql-request

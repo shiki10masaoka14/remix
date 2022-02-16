@@ -1,5 +1,9 @@
-query GetProducts($first: Int) {
-  products(first: $first) {
+query GetProducts($first: Int!, $after: String) {
+  products(first: $first, after: $after) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+    }
     edges {
       node {
         title
@@ -40,5 +44,19 @@ query FindProduct($id: ID, $first: Int) {
         }
       }
     }
+  }
+}
+
+query FindCursor($first: Int) {
+  products(first: $first) {
+    edges {
+      cursor
+    }
+  }
+}
+
+query GetShopInfo {
+  shop {
+    description
   }
 }

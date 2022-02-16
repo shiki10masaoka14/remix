@@ -8,7 +8,8 @@
     "build": "remix build",
     "postinstall": "remix setup node",
     "start": "remix-serve build",
-    "generate": "graphql-codegen --require dotenv/config --config codegen.yml"
+    "generate-shopify": "graphql-codegen --require dotenv/config --config app/utils/shopifyCodegen.yml",
+    "generate-graphCMS": "graphql-codegen --require dotenv/config --config app/utils/graphCMSCodegen.yml"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.8.3",

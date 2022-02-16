@@ -3530,10 +3530,7 @@ export enum LocationSortKeys {
 /** Represents a mailing address for customers and shipping. */
 export type MailingAddress = Node & {
   __typename?: 'MailingAddress';
-  /**
-   * The first line of the address. Typically the street address or PO Box number.
-   *
-   */
+  /** The first line of the address. Typically the street address or PO Box number. */
   address1?: Maybe<Scalars['String']>;
   /**
    * The second line of the address. Typically the number of the apartment, suite, or unit.
@@ -6325,11 +6322,12 @@ export enum WeightUnit {
 }
 
 export type GetProductsQueryVariables = Exact<{
-  first?: InputMaybe<Scalars['Int']>;
+  first: Scalars['Int'];
+  after?: InputMaybe<Scalars['String']>;
 }>;
 
 
-export type GetProductsQuery = { __typename?: 'QueryRoot', products: { __typename?: 'ProductConnection', edges: Array<{ __typename?: 'ProductEdge', node: { __typename?: 'Product', title: string, id: string, priceRange: { __typename?: 'ProductPriceRange', maxVariantPrice: { __typename?: 'MoneyV2', amount: any } }, featuredImage?: { __typename?: 'Image', url: any } | null } }> } };
+export type GetProductsQuery = { __typename?: 'QueryRoot', products: { __typename?: 'ProductConnection', pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean }, edges: Array<{ __typename?: 'ProductEdge', node: { __typename?: 'Product', title: string, id: string, priceRange: { __typename?: 'ProductPriceRange', maxVariantPrice: { __typename?: 'MoneyV2', amount: any } }, featuredImage?: { __typename?: 'Image', url: any } | null } }> } };
 
 export type FindProductQueryVariables = Exact<{
   id?: InputMaybe<Scalars['ID']>;
@@ -6339,10 +6337,26 @@ export type FindProductQueryVariables = Exact<{
 
 export type FindProductQuery = { __typename?: 'QueryRoot', product?: { __typename?: 'Product', id: string, title: string, description: string, featuredImage?: { __typename?: 'Image', url: any } | null, priceRange: { __typename?: 'ProductPriceRange', maxVariantPrice: { __typename?: 'MoneyV2', amount: any } }, variants: { __typename?: 'ProductVariantConnection', edges: Array<{ __typename?: 'ProductVariantEdge', node: { __typename?: 'ProductVariant', selectedOptions: Array<{ __typename?: 'SelectedOption', name: string, value: string }> } }> } } | null };
 
+export type FindCursorQueryVariables = Exact<{
+  first?: InputMaybe<Scalars['Int']>;
+}>;
+
+
+export type FindCursorQuery = { __typename?: 'QueryRoot', products: { __typename?: 'ProductConnection', edges: Array<{ __typename?: 'ProductEdge', cursor: string }> } };
+
+export type GetShopInfoQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetShopInfoQuery = { __typename?: 'QueryRoot', shop: { __typename?: 'Shop', description?: string | null } };
+
 
 export const GetProductsDocument = gql`
-    query GetProducts($first: Int) {
-  products(first: $first) {
+    query GetProducts($first: Int!, $after: String) {
+  products(first: $first, after: $after) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+    }
     edges {
       node {
         title
@@ -6387,6 +6401,22 @@ export const FindProductDocument = gql`
   }
 }
     `;
+export const FindCursorDocument = gql`
+    query FindCursor($first: Int) {
+  products(first: $first) {
+    edges {
+      cursor
+    }
+  }
+}
+    `;
+export const GetShopInfoDocument = gql`
+    query GetShopInfo {
+  shop {
+    description
+  }
+}
+    `;
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string) => Promise<T>;
 
@@ -6395,11 +6425,17 @@ const defaultWrapper: SdkFunctionWrapper = (action, _operationName) => action();
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
-    GetProducts(variables?: GetProductsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetProductsQuery> {
+    GetProducts(variables: GetProductsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetProductsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetProductsQuery>(GetProductsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'GetProducts');
     },
     FindProduct(variables?: FindProductQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<FindProductQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<FindProductQuery>(FindProductDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'FindProduct');
+    },
+    FindCursor(variables?: FindCursorQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<FindCursorQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<FindCursorQuery>(FindCursorDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'FindCursor');
+    },
+    GetShopInfo(variables?: GetShopInfoQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetShopInfoQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetShopInfoQuery>(GetShopInfoDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'GetShopInfo');
     }
   };
 }
