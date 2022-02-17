@@ -2,9 +2,11 @@ import { Heading, Text } from "@chakra-ui/react";
 import { VFC } from "react";
 import { LoaderFunction, useLoaderData } from "remix";
 import { Layout } from "~/components/Layout";
-import { getSdk, GetShopInfoQuery } from "~/utils/shopifyGenerated";
-import { shopifyClient } from "~/utils/shopifyClient";
-
+import { shopifyClient } from "~/utils/shopify/shopifyClient";
+import {
+  getSdk,
+  GetShopInfoQuery,
+} from "~/utils/shopify/shopifyGenerated";
 
 // ここまで
 //

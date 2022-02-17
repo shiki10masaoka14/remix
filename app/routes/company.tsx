@@ -1,20 +1,13 @@
-import {
-  Box,
-  Heading,
-  Table,
-  Tbody,
-  Td,
-  Text,
-  Tr,
-} from "@chakra-ui/react";
+import { Box, Heading, Table, Tbody, Td, Text, Tr } from "@chakra-ui/react";
 import { VFC } from "react";
 import { LoaderFunction, useLoaderData } from "remix";
 import { Layout } from "~/components/Layout";
-import { graphCMSClient } from "~/utils/graphCMSClient";
+import { graphCMSClient } from "~/utils/graphCMS/graphCMSClient";
 import {
   GetInfosQuery,
   getSdk,
-} from "~/utils/graphCMSGenerated";
+} from "~/utils/graphCMS/graphCMSGenerated";
+
 
 export const loader: LoaderFunction = async () => {
   const sdk = getSdk(graphCMSClient);

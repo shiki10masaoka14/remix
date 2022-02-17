@@ -61,7 +61,7 @@ export const Header: VFC = memo(() => {
               <Link as={RemixLink} to={`/company`}>
                 COMPANY
               </Link>
-              <Link as={RemixLink} to={`#`}>
+              <Link as={RemixLink} to={`/contact`}>
                 CONTACT
               </Link>
             </Stack>

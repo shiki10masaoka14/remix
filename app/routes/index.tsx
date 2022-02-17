@@ -4,8 +4,8 @@ import { LoaderFunction, useLoaderData } from "remix";
 import { Link as RemixLink } from "remix";
 import { Layout } from "~/components/Layout";
 import { ProductCard } from "~/components/productCard";
-import { GetProductsQuery, getSdk } from "~/utils/shopifyGenerated";
-import { shopifyClient } from "~/utils/shopifyClient";
+import { shopifyClient } from "~/utils/shopify/shopifyClient";
+import { GetProductsQuery, getSdk } from "~/utils/shopify/shopifyGenerated";
 
 
 // ここまで

@@ -1,11 +1,23 @@
-import { Heading, HStack, Link, SimpleGrid, Text } from "@chakra-ui/react";
+import {
+  Heading,
+  HStack,
+  Link,
+  SimpleGrid,
+  Text,
+} from "@chakra-ui/react";
 import { VFC } from "react";
-import { LoaderFunction, useLoaderData, Link as RemixLink } from "remix";
+import {
+  LoaderFunction,
+  useLoaderData,
+  Link as RemixLink,
+} from "remix";
 import { Layout } from "~/components/Layout";
 import { ProductCard } from "~/components/productCard";
-import { GetProductsQuery, getSdk } from "~/utils/shopifyGenerated";
-import { shopifyClient } from "~/utils/shopifyClient";
-
+import { shopifyClient } from "~/utils/shopify/shopifyClient";
+import {
+  GetProductsQuery,
+  getSdk,
+} from "~/utils/shopify/shopifyGenerated";
 
 // ここまで
 //
@@ -16,7 +28,7 @@ import { shopifyClient } from "~/utils/shopifyClient";
 export const loader: LoaderFunction = async ({
   params,
 }) => {
-  const pageItems = 12
+  const pageItems = 12;
   const pageId = Number(params.pageId);
   const cursorNum =
     Number(params.pageId) * pageItems - pageItems;

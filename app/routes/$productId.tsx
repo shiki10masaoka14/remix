@@ -1,11 +1,24 @@
-import { Center, Heading, HStack, Image, Stack, Table, Tbody, Td, Text, Tr } from "@chakra-ui/react";
+import {
+  Center,
+  Heading,
+  HStack,
+  Image,
+  Stack,
+  Table,
+  Tbody,
+  Td,
+  Text,
+  Tr,
+} from "@chakra-ui/react";
 import { VFC } from "react";
 import { useNavigate } from "remix";
 import { LoaderFunction, useLoaderData } from "remix";
 import { Layout } from "~/components/Layout";
-import { FindProductQuery, getSdk } from "~/utils/shopifyGenerated";
-import { shopifyClient } from "~/utils/shopifyClient";
-
+import { shopifyClient } from "~/utils/shopify/shopifyClient";
+import {
+  FindProductQuery,
+  getSdk,
+} from "~/utils/shopify/shopifyGenerated";
 
 // ここまで
 //
